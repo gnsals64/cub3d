@@ -6,7 +6,7 @@
 /*   By: hunaprk <hunaprk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 14:08:22 by hunaprk           #+#    #+#             */
-/*   Updated: 2023/05/08 17:25:09 by hunaprk          ###   ########.fr       */
+/*   Updated: 2023/05/09 11:50:43 by hunaprk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define mapHeight 24
 # define width 640
 # define height 480
+# define MINI_SCALE 0.25
 # define TILE_SIZE 80
 # define MAP_NUM_ROWS 12
 # define MAP_NUM_COLS 20
@@ -35,6 +36,15 @@ typedef struct s_mlx
 	void	*mlx;
 	void	*win;
 }	t_mlx;
+
+typedef struct s_img
+{
+	void	*img;
+	int		*data;
+	int		bpp;
+	int		line_size;
+	int		endian;
+}	t_img;
 
 typedef struct	s_info
 {

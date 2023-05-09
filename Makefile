@@ -12,7 +12,7 @@ all : ${NAME}
 
 ${NAME} :
 	@make -C ${LIBFT}
-	@${CC}  ${SRCS} ${MLX_EXEC} ${INC} -o ${NAME}
+	@${CC} -g ${SRCS} ${MLX_EXEC} ${INC} -o ${NAME}
 
 clean :
 	@make clean -C ${LIBFT}
