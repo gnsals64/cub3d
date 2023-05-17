@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   util.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hupa <hupa@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 18:41:09 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/16 21:27:54 by hupa             ###   ########.fr       */
+/*   Created: 2023/05/05 15:12:49 by junhyupa          #+#    #+#             */
+/*   Updated: 2023/05/17 16:09:59 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#ifndef	ERR_H
+# define ERR_H
 
-void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
-{
-	char	*dst;
+# include "cub3d.h"
 
-	dst = img->addr + (y * img->line_size + x * (img->bpp / 8));
-	*(unsigned int*)dst = color;
-}
+void	*safe_calloc(size_t n, size_t size);
+void	print_err(char *msg, char *msg2);
+void	error_control(char *msg, char *msg2, int n);
+
+void	free_all(t_cub *cub);
+void	free_box(char **box);
+
+#endif

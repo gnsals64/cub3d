@@ -3,14 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hupa <hupa@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:40:17 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/17 13:32:17 by hupa             ###   ########.fr       */
+/*   Updated: 2023/05/17 16:48:35 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
+
+void	print_box(char **box)
+{
+	int	i;
+
+	i = 0;
+	while (box[i])
+		ft_putstr_fd(box[i++], 1);
+}
+
+void	print_info(t_cub *info)
+{
+	printf("no : %s \nso : %s \nwe : %s \nea : %s \nmap_width : %d map_height : %d\n", info->texture[NO].path, info->texture[SO].path, info->texture[WE].path, info->texture[EA].path, info->map_width, info->map_height);
+	printf("fc : %d, %d, %d, cc : %d, %d, %d\n",  info-> f_color >> 16 & 255, info->f_color >> 8 & 255, info->f_color & 255, info-> c_color >> 16 & 255, info->c_color >> 8 & 255, info->c_color & 255);
+	print_box(info->map);
+	write(1,"\n",1);
+}
 
 int	worldMap[24][24] = {
 							{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -199,15 +216,30 @@ void	hook(t_data *data)
 {
 	mlx_loop_hook(data->mlx.mlx_ptr, &main_loop, data);
 	mlx_hook(data->mlx.mlx_win, X_EVENT_KEY_PRESS, 1L<<0, &key_press, &data->player);
-	//mlx_hook(data->mlx.mlx_win, X_EVENT_KEY_EXIT, 1L<<0, &key_exit, data);
+	mlx_hook(data->mlx.mlx_win, X_EVENT_KEY_EXIT, 1L<<0, &key_exit, data);
 	mlx_loop(data->mlx.mlx_ptr);
 }
 
-int main()
+int	main(int ac, char **av)
 {
 	t_data	data;
 
+	if (ac != 2)
+		return (1);
 	ft_init(&data);
+	parser(av[1], &data.cub);
+	print_info(&data.cub);
 	//render(&data);
 	hook(&data);
+	return (0);
 }
+
+// int main(int ac, char **av)
+// {
+// 	t_data	data;
+
+
+// 	ft_init(&data);
+// 	//render(&data);
+// 	hook(&data);
+// }

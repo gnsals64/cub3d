@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hupa <hupa@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 14:08:22 by hunaprk           #+#    #+#             */
-/*   Updated: 2023/05/17 13:10:00 by hupa             ###   ########.fr       */
+/*   Updated: 2023/05/17 16:24:26 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,16 @@
 # define CUB3D_H
 
 # include "../libft/libft.h"
+# include "../GNL/get_next_line.h"
 # include <mlx.h>
 # include <stdio.h>
 # include <string.h>
 # include <math.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <err.h>
+# include <errno.h>
+# include <fcntl.h>
 
 # define X_EVENT_KEY_PRESS	2
 # define X_EVENT_KEY_release	3
@@ -42,11 +48,37 @@
 # define WINDOW_WIDTH (MAP_NUM_COLS * TILE_SIZE)
 # define WINDOW_HEIGHT (MAP_NUM_ROWS * TILE_SIZE)
 
+enum direct{
+	NO,
+	SO,
+	WE,
+	EA,
+};
+
+typedef struct s_texture
+{
+	char	*path;
+	void	*texture;
+	int		texture_width;
+	int		texture_height;
+} t_texture;
+
+typedef struct s_cub
+{
+	char		**map;
+	t_texture	texture[4];
+	int			f_color;
+	int			c_color;
+	int			map_width;
+	int			map_height;
+} t_cub;
+
 typedef struct s_mlx
 {
 	void	*mlx_ptr;
 	void	*mlx_win;
 }	t_mlx;
+
 
 typedef struct s_img
 {
@@ -76,6 +108,7 @@ typedef struct s_data
 	t_player	player;
 	t_img		img;
 	t_mlx		mlx;
+	t_cub		cub;
 }	t_data;
 
 static int map[MAP_NUM_ROWS][MAP_NUM_COLS] = {
@@ -92,6 +125,9 @@ static int map[MAP_NUM_ROWS][MAP_NUM_COLS] = {
 	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1},
 	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
 };
+
+# include "util.h"
+# include "parser.h"
 
 // main
 void	hook(t_data *data);
