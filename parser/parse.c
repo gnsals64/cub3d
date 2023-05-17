@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:57:27 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/05/17 16:38:09 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/17 17:53:36 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	texture_init(t_data *data)
 			cub->texture[i].path, &cub->texture[i].texture_width, &cub->texture[i].texture_height);
 }
 
-void	parser(char *av, t_cub *cub)
+void	parser(char *av, t_cub *cub, t_data *data)
 {
 	int	fd;
 
@@ -104,5 +104,5 @@ void	parser(char *av, t_cub *cub)
 	parse_option(fd, cub);
 	parse_map(fd, cub);
 	close(fd);
-	map_checker(cub);
+	map_checker(cub->map, cub, data);
 }

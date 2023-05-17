@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:40:17 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/17 16:48:35 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/17 18:47:33 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,14 +220,26 @@ void	hook(t_data *data)
 	mlx_loop(data->mlx.mlx_ptr);
 }
 
+static int	is_cub(char *av)
+{
+	size_t	len;
+
+	len = ft_strlen(av);
+	if (len < 5)
+		error_control(".cub file only Error", NULL, 1);
+	if (ft_strncmp(".cub", &av[len - 4], 4))
+		error_control(".cub file only Error", NULL, 1);
+	return (0);
+}
+
 int	main(int ac, char **av)
 {
 	t_data	data;
 
-	if (ac != 2)
-		return (1);
+	if (ac != 2 || is_cub(av[1]))
+		error_control("worng argument Error", NULL, 1);
 	ft_init(&data);
-	parser(av[1], &data.cub);
+	parser(av[1], &data.cub, &data);
 	print_info(&data.cub);
 	//render(&data);
 	hook(&data);

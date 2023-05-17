@@ -6,14 +6,14 @@
 #    By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 16:37:06 by junhyupa          #+#    #+#              #
-#    Updated: 2023/05/17 16:49:28 by junhyupa         ###   ########.fr        #
+#    Updated: 2023/05/17 18:52:31 by junhyupa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 
 CC = cc
-FLAG = -Wall -Werror -Wextra
+# FLAG = -Wall -Werror -Wextra
 
 INC = -I ./inc
 
@@ -42,10 +42,10 @@ OBJS := $(SRCS:.c=.o) $(PARSER_SRCS:.c=.o) $(UTIL_SRCS:.c=.o) $(GNL_SRCS:.c=.o)
 all : ${NAME}
 
 %.o : %.c
-	$(CC) $(CFLAGS) ${INC} -c $< -o  $@
+	$(CC) $(FLAG) ${INC} -c $< -o  $@
 
 ${NAME} : $(OBJS) $(LIBFT)
-	${CC} -g $^ ${MLX_EXEC} ${INC} -o $@
+	${CC} $(FLAG) ${MLX_EXEC} $^ ${INC} -o $@
 
 $(LIBFT) :
 	make -C $(LIBFT_DIR)

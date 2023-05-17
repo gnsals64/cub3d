@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:40:46 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/17 16:19:16 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/17 17:48:58 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	ft_init_player(t_data *data)
 {
 	t_player	player;
 
-	player.posX = 12;
-	player.posY = 5;
-	player.dirX = -1;
+	player.posX = -1;
+	player.posY = -1;
+	player.dirX = 0;
 	player.dirY = 0;
 	player.planeX = 0;
 	player.planeY = 0.66;
