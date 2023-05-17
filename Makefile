@@ -3,16 +3,16 @@ CC = cc
 FLAG = -Wall -Werror -Wextra
 INC = -I $(MLX_DIR) -I ./inc
 MLX_DIR = ./minilibx-linux
-MLX_EXEC = $(MLX_DIR)/libmlx.a -lXext -lX11 -lm -lbsd
+MLX_EXEC = -L{MLX_DIR} -lmlx -lm -lX11 -lXext
 LIBFT = ./libft
-FILES = $(addprefix ./, test)
+FILES = $(addprefix ./src/, main init render utils hook)
 SRCS = $(FILES:=.c)
 
 all : ${NAME}
 
 ${NAME} :
 	@make -C ${LIBFT}
-	@${CC} -g ${SRCS} ${MLX_EXEC} ${INC} -o ${NAME}
+	${CC} -g ${SRCS} ${MLX_EXEC} ${INC} -o ${NAME}
 
 clean :
 	@make clean -C ${LIBFT}
