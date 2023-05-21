@@ -6,7 +6,7 @@
 /*   By: hupa <hupa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:40:17 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/17 13:32:17 by hupa             ###   ########.fr       */
+/*   Updated: 2023/05/21 14:06:37 by hupa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,42 +150,44 @@ void	calc(t_data *data)
 	}
 }
 
-int	key_press(int key, t_player *info)
+int	key_press(int key, t_data *data)
 {
 	if (key == KEY_W)
 	{
-		if (!worldMap[(int)(info->posX + info->dirX * info->moveSpeed)][(int)(info->posY)])
-			info->posX += info->dirX * info->moveSpeed;
-		if (!worldMap[(int)(info->posX)][(int)(info->posY + info->dirY * info->moveSpeed)])
-			info->posY += info->dirY * info->moveSpeed;
+		if (!worldMap[(int)(data->player.posX + data->player.dirX * data->player.moveSpeed)][(int)(data->player.posY)])
+			data->player.posX += data->player.dirX * data->player.moveSpeed;
+		if (!worldMap[(int)(data->player.posX)][(int)(data->player.posY + data->player.dirY * data->player.moveSpeed)])
+			data->player.posY += data->player.dirY * data->player.moveSpeed;
 	}
 	if (key == KEY_S)
 	{
-		if (!worldMap[(int)(info->posX - info->dirX * info->moveSpeed)][(int)(info->posY)])
-			info->posX -= info->dirX * info->moveSpeed;
-		if (!worldMap[(int)(info->posX)][(int)(info->posY - info->dirY * info->moveSpeed)])
-			info->posY -= info->dirY * info->moveSpeed;
+		if (!worldMap[(int)(data->player.posX - data->player.dirX * data->player.moveSpeed)][(int)(data->player.posY)])
+			data->player.posX -= data->player.dirX * data->player.moveSpeed;
+		if (!worldMap[(int)(data->player.posX)][(int)(data->player.posY - data->player.dirY * data->player.moveSpeed)])
+			data->player.posY -= data->player.dirY * data->player.moveSpeed;
 	}
 	if (key == KEY_D)
 	{
-		double oldDirX = info->dirX;
-		info->dirX = info->dirX * cos(-info->rotSpeed) - info->dirY * sin(-info->rotSpeed);
-		info->dirY = oldDirX * sin(-info->rotSpeed) + info->dirY * cos(-info->rotSpeed);
-		double oldPlaneX = info->planeX;
-		info->planeX = info->planeX * cos(-info->rotSpeed) - info->planeY * sin(-info->rotSpeed);
-		info->planeY = oldPlaneX * sin(-info->rotSpeed) + info->planeY * cos(-info->rotSpeed);
+		double oldDirX = data->player.dirX;
+		data->player.dirX = data->player.dirX * cos(-data->player.rotSpeed) - data->player.dirY * sin(-data->player.rotSpeed);
+		data->player.dirY = oldDirX * sin(-data->player.rotSpeed) + data->player.dirY * cos(-data->player.rotSpeed);
+		double oldPlaneX = data->player.planeX;
+		data->player.planeX = data->player.planeX * cos(-data->player.rotSpeed) - data->player.planeY * sin(-data->player.rotSpeed);
+		data->player.planeY = oldPlaneX * sin(-data->player.rotSpeed) + data->player.planeY * cos(-data->player.rotSpeed);
 	}
 	if (key == KEY_A)
 	{
-		double oldDirX = info->dirX;
-		info->dirX = info->dirX * cos(info->rotSpeed) - info->dirY * sin(info->rotSpeed);
-		info->dirY = oldDirX * sin(info->rotSpeed) + info->dirY * cos(info->rotSpeed);
-		double oldPlaneX = info->planeX;
-		info->planeX = info->planeX * cos(info->rotSpeed) - info->planeY * sin(info->rotSpeed);
-		info->planeY = oldPlaneX * sin(info->rotSpeed) + info->planeY * cos(info->rotSpeed);
+		double oldDirX = data->player.dirX;
+		data->player.dirX = data->player.dirX * cos(data->player.rotSpeed) - data->player.dirY * sin(data->player.rotSpeed);
+		data->player.dirY = oldDirX * sin(data->player.rotSpeed) + data->player.dirY * cos(data->player.rotSpeed);
+		double oldPlaneX = data->player.planeX;
+		data->player.planeX = data->player.planeX * cos(data->player.rotSpeed) - data->player.planeY * sin(data->player.rotSpeed);
+		data->player.planeY = oldPlaneX * sin(data->player.rotSpeed) + data->player.planeY * cos(data->player.rotSpeed);
 	}
 	if (key == KEY_ESC)
 		exit(0);
+	mlx_clear_window(data->mlx.mlx_ptr, data->mlx.mlx_win);
+	main_loop(data);
 	return (0);
 }
 

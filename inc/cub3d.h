@@ -6,7 +6,7 @@
 /*   By: hupa <hupa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 14:08:22 by hunaprk           #+#    #+#             */
-/*   Updated: 2023/05/17 13:10:00 by hupa             ###   ########.fr       */
+/*   Updated: 2023/05/21 14:02:45 by hupa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ static int map[MAP_NUM_ROWS][MAP_NUM_COLS] = {
 
 // main
 void	hook(t_data *data);
+int		main_loop(t_data *data);
 
 // init
 void	ft_init(t_data *data);
