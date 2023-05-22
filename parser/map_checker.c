@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 19:05:28 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/05/17 18:57:17 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/22 19:41:33 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	map_checker(char **map, t_cub *cub, t_data *data)
 	int	x;
 	int	y;
 
+	(void)data;
 	x = 0;
 	y = 0;
 	while(map[y])
@@ -92,8 +93,8 @@ void	map_checker(char **map, t_cub *cub, t_data *data)
 				error_control("map Error", NULL, 1);
 			if (map[y][x] == ' ' && check_caldinal(map, cub, x, y))
 				error_control("map Error2", NULL, 1);
-			if (is_elements(map[y][x]) == 3)
-				check_user_direction(x, y, data);
+			// if (is_elements(map[y][x]) == 3)
+			// 	check_user_direction(x, y, data);
 			x++;
 		}
 		if(map[y][x - 1] != ' ' && map[y][x - 1] != '1')

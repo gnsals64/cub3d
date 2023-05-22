@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hupa <hupa@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:57:27 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/05/22 04:52:00 by hupa             ###   ########.fr       */
+/*   Updated: 2023/05/22 19:47:44 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 static int	is_alldigit(char *s)
 {
+	int	len;
+
+	len = ft_strlen(s);
+	if (len == 0 || (len > 3 && s[3] != '\n'))
+		return (0);
 	while (s && *s)
 	{
 		if (!ft_isdigit(*s) && *s != '\n')
@@ -34,7 +39,7 @@ static int		parse_color(char *s)
 	tmp = 0;
 	while(box && box[i] && i < 3)
 	{
-		if (ft_strlen(box[i]) > 3 || !is_alldigit(box[i]))
+		if (!is_alldigit(box[i]))
 			error_control("cub file Error1", NULL, 1);
 		tmp = tmp << 8;
 		tmp += atoi(box[i]);

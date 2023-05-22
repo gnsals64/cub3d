@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hupa <hupa@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 14:08:22 by hunaprk           #+#    #+#             */
-/*   Updated: 2023/05/22 04:15:47 by hupa             ###   ########.fr       */
+/*   Updated: 2023/05/22 19:28:20 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,15 @@
 # define X_EVENT_KEY_EXIT	17
 
 # define KEY_ESC 65307
-# define KEY_A 97
-# define KEY_D 100
-# define KEY_W 119
-# define KEY_S 115
+# define KEY_A 0
+# define KEY_D 2
+# define KEY_W 13
+# define KEY_S 1
 
 # define mapWidth 24
 # define mapHeight 24
-# define width 1920
-# define height 1080
+# define width 520
+# define height 320
 # define MINI_SCALE 1
 # define TILE_SIZE 80
 # define MAP_NUM_ROWS 12
@@ -197,5 +197,8 @@ void	dda(t_data *data);
 // draw
 void	verLine(t_data *data, int x, int y1, int y2, int color);
 void	draw(t_data *data);
+
+
+void	draw_up_down(t_data *data);
 
 #endif

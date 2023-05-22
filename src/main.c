@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hupa <hupa@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:40:17 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/22 04:51:58 by hupa             ###   ########.fr       */
+/*   Updated: 2023/05/22 19:33:04 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main(int ac, char **av)
 		error_control("worng argument Error", NULL, 1);
 	ft_init(&data);
 	parser(av[1], &data.cub, &data);
-	print_info(&data.cub);
+	// print_info(&data.cub);
 	loop(&data);
 	return (0);
 }

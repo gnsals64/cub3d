@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_raycast.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hupa <hupa@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 03:29:22 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/22 04:08:46 by hupa             ###   ########.fr       */
+/*   Updated: 2023/05/22 19:40:56 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	set_raydir(t_data *data, int x)
 {
+	(void)x;
 	if (data->ray.rayDirX < 0)
 	{
 		data->ray.stepX = -1;

@@ -3,29 +3,29 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hupa <hupa@student.42.fr>                  +#+  +:+       +#+         #
+#    By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 16:37:06 by junhyupa          #+#    #+#              #
-#    Updated: 2023/05/22 03:44:47 by hupa             ###   ########.fr        #
+#    Updated: 2023/05/22 19:39:28 by junhyupa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 
 CC = cc
-# FLAG = -Wall -Werror -Wextra
+FLAG = -Wall -Werror -Wextra -g -fsanitize=address
 
 INC = -I ./inc
 
-MLX_DIR = ./minilibx-linux
-MLX_EXEC = -L{MLX_DIR} -lmlx -lm -lX11 -lXext
-#MLX_DIR = ./
-#MLX_EXEC = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+# MLX_DIR = ./minilibx-linux
+# MLX_EXEC = -L{MLX_DIR} -lmlx -lm -lX11 -lXext
+MLX_DIR = ./
+MLX_EXEC = -L$(MLX_DIR) -lmlx #-framework OpenGL -framework AppKit
 
 LIBFT := ./libft/libft.a
 LIBFT_DIR := ./libft/
 
-FILES = $(addprefix ./src/, dda draw hook init_raycast init loop main raycast)
+FILES = $(addprefix ./src/, dda draw hook init_raycast init loop main raycast add)
 SRCS = $(FILES:=.c)
 
 PARSER_SRC := parse.c parse_map.c map_checker.c
