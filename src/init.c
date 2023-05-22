@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hupa <hupa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:40:46 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/17 17:48:58 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/22 13:54:36 by hupa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	ft_init_player(t_data *data)
 {
 	t_player	player;
 
-	player.posX = -1;
-	player.posY = -1;
-	player.dirX = 0;
+	player.posX = 12;
+	player.posY = 5;
+	player.dirX = -1;
 	player.dirY = 0;
 	player.planeX = 0;
 	player.planeY = 0.66;

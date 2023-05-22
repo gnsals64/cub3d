@@ -1,4 +1,5 @@
-#include "mlx.h"
+#include "mlx/mlx.h"
+#include "key_macos.h"
 #include <math.h>
 #include <string.h>
 #include <stdio.h>
@@ -9,23 +10,19 @@
 #define texHeight 64
 #define mapWidth 24
 #define mapHeight 24
-#define width 1920
-#define height 1080
-
-
-# define KEY_ESC 65307
-# define KEY_A 97
-# define KEY_D 100
-# define KEY_W 119
-# define KEY_S 115
+#define width 640
+#define height 480
 
 typedef struct	s_img
 {
 	void	*img;
 	int		*data;
+
 	int		size_l;
 	int		bpp;
 	int		endian;
+	int		img_width;
+	int		img_height;
 }				t_img;
 
 typedef struct	s_info
@@ -39,11 +36,12 @@ typedef struct	s_info
 	void	*mlx;
 	void	*win;
 	t_img	img;
-	int		**buf;
-	int		texture[8][texHeight * texWidth];
+	int		buf[height][width];
+	int		**texture;
 	double	moveSpeed;
 	double	rotSpeed;
 	int		re_buf;
+
 }				t_info;
 
 int	worldMap[mapWidth][mapHeight] =
@@ -100,7 +98,6 @@ void	calc(t_info *info)
 				info->buf[i][j] = 0;
 			}
 		}
-		info->re_buf = 0;
 	}
 	while (x < width)
 	{
@@ -229,7 +226,7 @@ int	main_loop(t_info *info)
 
 int	key_press(int key, t_info *info)
 {
-	if (key == KEY_W)
+	if (key == K_W)
 	{
 		if (!worldMap[(int)(info->posX + info->dirX * info->moveSpeed)][(int)(info->posY)])
 			info->posX += info->dirX * info->moveSpeed;
@@ -237,7 +234,7 @@ int	key_press(int key, t_info *info)
 			info->posY += info->dirY * info->moveSpeed;
 	}
 	//move backwards if no wall behind you
-	if (key == KEY_S)
+	if (key == K_S)
 	{
 		if (!worldMap[(int)(info->posX - info->dirX * info->moveSpeed)][(int)(info->posY)])
 			info->posX -= info->dirX * info->moveSpeed;
@@ -245,7 +242,7 @@ int	key_press(int key, t_info *info)
 			info->posY -= info->dirY * info->moveSpeed;
 	}
 	//rotate to the right
-	if (key == KEY_D)
+	if (key == K_D)
 	{
 		//both camera direction and camera plane must be rotated
 		double oldDirX = info->dirX;
@@ -256,7 +253,7 @@ int	key_press(int key, t_info *info)
 		info->planeY = oldPlaneX * sin(-info->rotSpeed) + info->planeY * cos(-info->rotSpeed);
 	}
 	//rotate to the left
-	if (key == KEY_A)
+	if (key == K_A)
 	{
 		//both camera direction and camera plane must be rotated
 		double oldDirX = info->dirX;
@@ -266,11 +263,39 @@ int	key_press(int key, t_info *info)
 		info->planeX = info->planeX * cos(info->rotSpeed) - info->planeY * sin(info->rotSpeed);
 		info->planeY = oldPlaneX * sin(info->rotSpeed) + info->planeY * cos(info->rotSpeed);
 	}
-	if (key == KEY_ESC)
+	if (key == K_ESC)
 		exit(0);
 	mlx_clear_window(info->mlx, info->win);
 	main_loop(info);
 	return (0);
+}
+
+void	load_image(t_info *info, int *texture, char *path, t_img *img)
+{
+	img->img = mlx_xpm_file_to_image(info->mlx, path, &img->img_width, &img->img_height);
+	img->data = (int *)mlx_get_data_addr(img->img, &img->bpp, &img->size_l, &img->endian);
+	for (int y = 0; y < img->img_height; y++)
+	{
+		for (int x = 0; x < img->img_width; x++)
+		{
+			texture[img->img_width * y + x] = img->data[img->img_width * y + x];
+		}
+	}
+	mlx_destroy_image(info->mlx, img->img);
+}
+
+void	load_texture(t_info *info)
+{
+	t_img	img;
+
+	load_image(info, info->texture[0], "textures/eagle.xpm", &img);
+	load_image(info, info->texture[1], "textures/redbrick.xpm", &img);
+	load_image(info, info->texture[2], "textures/purplestone.xpm", &img);
+	load_image(info, info->texture[3], "textures/greystone.xpm", &img);
+	load_image(info, info->texture[4], "textures/bluestone.xpm", &img);
+	load_image(info, info->texture[5], "textures/mossy.xpm", &img);
+	load_image(info, info->texture[6], "textures/wood.xpm", &img);
+	load_image(info, info->texture[7], "textures/colorstone.xpm", &img);
 }
 
 int	main(void)
@@ -286,12 +311,6 @@ int	main(void)
 	info.planeY = 0.66;
 	info.re_buf = 0;
 
-	info.buf = (int **)malloc(sizeof(int *) * height);
-	for (int i = 0; i < height; i++)
-	{
-		info.buf[i] = (int *)malloc(sizeof(int) * width);
-	}
-
 	for (int i = 0; i < height; i++)
 	{
 		for (int j = 0; j < width; j++)
@@ -300,6 +319,13 @@ int	main(void)
 		}
 	}
 
+	if (!(info.texture = (int **)malloc(sizeof(int *) * 8)))
+		return (-1);
+	for (int i = 0; i < 8; i++)
+	{
+		if (!(info.texture[i] = (int *)malloc(sizeof(int) * (texHeight * texWidth))))
+			return (-1);
+	}
 	for (int i = 0; i < 8; i++)
 	{
 		for (int j = 0; j < texHeight * texWidth; j++)
@@ -308,23 +334,7 @@ int	main(void)
 		}
 	}
 
-	for (int x = 0; x < texWidth; x++)
-	{
-		for (int y = 0; y < texHeight; y++)
-		{
-			int xorcolor = (x * 256 / texWidth) ^ (y * 256 / texHeight);
-			int ycolor = y * 256 / texHeight;
-			int xycolor = y * 128 / texHeight + x * 128 / texWidth;
-			info.texture[0][texWidth * y + x] = 65536 * 254 * (x != y && x != texWidth - y); //flat red texture with black cross
-			info.texture[1][texWidth * y + x] = xycolor + 256 * xycolor + 65536 * xycolor; //sloped greyscale
-			info.texture[2][texWidth * y + x] = 256 * xycolor + 65536 * xycolor; //sloped yellow gradient
-			info.texture[3][texWidth * y + x] = xorcolor + 256 * xorcolor + 65536 * xorcolor; //xor greyscale
-			info.texture[4][texWidth * y + x] = 256 * xorcolor; //xor green
-			info.texture[5][texWidth * y + x] = 65536 * 192 * (x % 16 && y % 16); //red bricks
-			info.texture[6][texWidth * y + x] = 65536 * ycolor; //red gradient
-			info.texture[7][texWidth * y + x] = 128 + 256 * 128 + 65536 * 128; //flat grey texture
-		}
-	}
+	load_texture(&info);
 
 	info.moveSpeed = 0.05;
 	info.rotSpeed = 0.05;
@@ -333,10 +343,9 @@ int	main(void)
 
 	info.img.img = mlx_new_image(info.mlx, width, height);
 	info.img.data = (int *)mlx_get_data_addr(info.img.img, &info.img.bpp, &info.img.size_l, &info.img.endian);
-	main_loop(&info);
 
-// 	mlx_loop_hook(info.mlx, &main_loop, &info);
-	mlx_hook(info.win, X_EVENT_KEY_PRESS, 1L<<0, &key_press, &info);
+	mlx_loop_hook(info.mlx, &main_loop, &info);
+	mlx_hook(info.win, X_EVENT_KEY_PRESS, 0, &key_press, &info);
 
 	mlx_loop(info.mlx);
 }
