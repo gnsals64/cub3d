@@ -3,28 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 03:14:50 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/25 18:45:17 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/05/25 20:34:58 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#include "../inc/cub3d.h"
 
 void	raycast(t_data *data)
 {
 	int	x;
 
 	x = 0;
-	if (data->tex.re_buf == 1)
+	for (int i = 0; i < height; i++)
 	{
-		for (int i = 0; i < height; i++)
+		for (int j = 0; j < width; j++)
 		{
-			for (int j = 0; j < width; j++)
-			{
-				data->tex.buf[i][j] = 0;
-			}
+			if (i > height / 2)
+				data->tex.buf[i][j] = data->cub.f_color;
+			else
+				data->tex.buf[i][j] = data->cub.c_color;
 		}
 	}
 	while (x < width)
@@ -39,7 +39,7 @@ void	raycast(t_data *data)
 
 void	next(t_data *data, int x)
 {
-	int texNum = worldMap[data->ray.mapY][data->ray.mapX];
+	int texNum = check_raydir(data);
 
 	double wallX;
 	if (data->ray.side == 0)

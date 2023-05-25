@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 21:27:39 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/25 19:45:03 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/25 19:55:09 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,18 @@ int	key_press(int key, t_data *data)
 {
 	if (key == KEY_W)
 	{
-		if (data->cub.map[(int)(data->player.posY)][(int)(data->player.posX + (data->player.dirX * data->player.moveSpeed + 0.15))] != '1')
+		if (data->cub.map[(int)(data->player.posY)][(int)(data->player.posX + (data->player.dirX * (data->player.moveSpeed + 0.15)))] != '1')
 			data->player.posX += data->player.dirX * data->player.moveSpeed;
-		printf("%d\n",data->cub.map[(int)(data->player.posY + (data->player.dirY * data->player.moveSpeed + 0.15))][(int)(data->player.posX)]);
-		if (data->cub.map[(int)(data->player.posY + (data->player.dirY * data->player.moveSpeed + 0.15))][(int)(data->player.posX)] != '1')
+		printf("%c\n",data->cub.map[(int)(data->player.posY + (data->player.dirY * data->player.moveSpeed + 0.15))][(int)(data->player.posX)]);
+		if (data->cub.map[(int)(data->player.posY + (data->player.dirY * (data->player.moveSpeed + 0.15)))][(int)(data->player.posX)] != '1')
 			data->player.posY += data->player.dirY * data->player.moveSpeed;
 		printf("x : %f y:%f\n", data->player.posX, data->player.posY);
 	}
 	if (key == KEY_S)
 	{
-		if (data->cub.map[(int)(data->player.posY)][(int)(data->player.posX - (data->player.dirX * data->player.moveSpeed + 0.15))] != '1')
+		if (data->cub.map[(int)(data->player.posY)][(int)(data->player.posX - (data->player.dirX * (data->player.moveSpeed + 0.15)))] != '1')
 			data->player.posX -= data->player.dirX * data->player.moveSpeed;
-		if (data->cub.map[(int)(data->player.posY - (data->player.dirY * data->player.moveSpeed) + 0.15)][(int)(data->player.posX)] != '1')
+		if (data->cub.map[(int)(data->player.posY - (data->player.dirY * (data->player.moveSpeed + 0.15)))][(int)(data->player.posX)] != '1')
 			data->player.posY -= data->player.dirY * data->player.moveSpeed;
 		printf("x : %f y:%f\n", data->player.posX, data->player.posY);
 	}

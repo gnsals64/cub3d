@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 14:08:22 by hunaprk           #+#    #+#             */
-/*   Updated: 2023/05/25 18:26:45 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/05/25 20:11:38 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,6 +204,7 @@ void	set_raydir(t_data *data, int x);
 void	dda(t_data *data);
 
 // draw
+int		check_raydir(t_data *data);
 void	verLine(t_data *data, int x, int y1, int y2, int color);
 void	draw(t_data *data);
 

@@ -3,14 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hupa <hupa@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 03:39:55 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/25 14:14:20 by hupa             ###   ########.fr       */
+/*   Updated: 2023/05/25 20:21:20 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#include "../inc/cub3d.h"
+
+int		check_raydir(t_data *data)
+{
+	if(data->ray.side == 1)
+	{
+		if(data->ray.rayDirY > 0)
+			return (SO);
+		else
+			return (NO);
+	}
+	else
+	{
+		if(data->ray.rayDirX > 0)
+			return (EA);
+		else
+			return (WE);
+	}
+}
 
 void	draw(t_data *data)
 {
