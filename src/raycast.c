@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 03:14:50 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/25 20:34:58 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/25 20:52:04 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void	next(t_data *data, int x)
 
 	double wallX;
 	if (data->ray.side == 0)
-		wallX = data->player.posY + data->ray.perpWallDist * data->ray.rayDirY;
+		wallX = -(data->player.posY + data->ray.perpWallDist * data->ray.rayDirY);
 	else
-		wallX = data->player.posX + data->ray.perpWallDist * data->ray.rayDirX;
+		wallX = -(data->player.posX + data->ray.perpWallDist * data->ray.rayDirX);
 	wallX -= floor(wallX);
 	int texX = (int)(wallX * (double)TEX_W);
 	if (data->ray.side == 0 && data->ray.rayDirX > 0)
