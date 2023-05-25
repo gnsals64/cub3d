@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hupa <hupa@student.42.fr>                  +#+  +:+       +#+         #
+#    By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 16:37:06 by junhyupa          #+#    #+#              #
-#    Updated: 2023/05/25 12:12:23 by hupa             ###   ########.fr        #
+#    Updated: 2023/05/25 15:53:45 by hunpark          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,10 @@ FLAG = -Wall -Werror -Wextra -g -fsanitize=address
 
 INC = -I ./inc
 
-MLX_DIR = ./minilibx-linux
-MLX_EXEC = -L{MLX_DIR} -lmlx -lm -lX11 -lXext
-#MLX_DIR = ./
-#MLX_EXEC = -L$(MLX_DIR) -lmlx #-framework OpenGL -framework AppKit
+#MLX_DIR = ./minilibx-linux
+#MLX_EXEC = -L{MLX_DIR} -lmlx -lm -lX11 -lXext
+MLX_DIR = ./
+MLX_EXEC = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 
 LIBFT := ./libft/libft.a
 LIBFT_DIR := ./libft/

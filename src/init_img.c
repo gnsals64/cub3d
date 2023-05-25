@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_img.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hupa <hupa@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 11:59:49 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/25 14:19:15 by hupa             ###   ########.fr       */
+/*   Updated: 2023/05/25 15:47:39 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_init_tex(t_data *data)
 	int	j;
 
 	i = 0;
-	while (i < 8)
+	while (i < 4)
 	{
 		data->tex.tex[i] = (int *)malloc(sizeof(int) * TEX_H * TEX_W);
 		if (!data->tex.tex[i])
@@ -71,6 +71,7 @@ void	load_image(t_data *data, int *texture, char *path, t_img *img)
 	img->addr = (int *)mlx_get_data_addr(img->img, &img->bpp, &img->line_size, &img->endian);
 	while (i < img->img_height)
 	{
+		j = 0;
 		while (j < img->img_width)
 		{
 			texture[img->img_width * i + j] = img->addr[img->img_width * i + j];
@@ -85,12 +86,8 @@ void	load_texture(t_data *data)
 {
 	t_img	img;
 
-	load_image(data, data->tex.tex[0], "tex/textures/eagle.xpm", &img);
-	load_image(data, data->tex.tex[1], "tex/textures/redbrick.xpm", &img);
-	load_image(data, data->tex.tex[2], "tex/textures/purplestone.xpm", &img);
-	load_image(data, data->tex.tex[3], "tex/textures/greystone.xpm", &img);
-	load_image(data, data->tex.tex[4], "tex/textures/bluestone.xpm", &img);
-	load_image(data, data->tex.tex[5], "tex/textures/mossy.xpm", &img);
-	load_image(data, data->tex.tex[6], "tex/textures/wood.xpm", &img);
-	load_image(data, data->tex.tex[7], "tex/textures/colorstone.xpm", &img);
+	load_image(data, data->tex.tex[NO], "tex/textures/wood.xpm", &img);
+	load_image(data, data->tex.tex[SO], "tex/textures/redbrick.xpm", &img);
+	load_image(data, data->tex.tex[WE], "tex/textures/eagle.xpm", &img);
+	load_image(data, data->tex.tex[EA], "tex/textures/east.xpm", &img);
 }

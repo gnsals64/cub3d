@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hupa <hupa@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 15:18:03 by yohlee            #+#    #+#             */
-/*   Updated: 2023/05/25 14:17:50 by hupa             ###   ########.fr       */
+/*   Updated: 2023/05/25 15:33:26 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@
 #define mapHeight 24
 #define width 1280
 #define height 720
-# define KEY_ESC 65307
-# define KEY_A 97
-# define KEY_D 100
-# define KEY_W 119
-# define KEY_S 115
+# define KEY_ESC 53
+# define KEY_A 0
+# define KEY_D 2
+# define KEY_W 13
+# define KEY_S 1
 
 typedef struct	s_img
 {
