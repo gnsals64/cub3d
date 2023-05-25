@@ -6,7 +6,7 @@
 /*   By: hupa <hupa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:40:46 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/22 13:54:36 by hupa             ###   ########.fr       */
+/*   Updated: 2023/05/25 14:18:52 by hupa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,15 @@ void	ft_init_mlx(t_data *data)
 	data->mlx = mlx;
 }
 
-void	ft_init_img(t_data *data)
-{
-	t_img	img;
-
-	img.img = mlx_new_image(data->mlx.mlx_ptr, (int)(MINI_SCALE * WINDOW_WIDTH), (int)(MINI_SCALE * WINDOW_HEIGHT));
-	img.addr = mlx_get_data_addr(img.img, &img.bpp, &img.line_size, &img.endian);
-	data->img = img;
-}
-
 void	ft_init_player(t_data *data)
 {
 	t_player	player;
 
-	player.posX = 12;
-	player.posY = 5;
-	player.dirX = -1;
-	player.dirY = 0;
-	player.planeX = 0;
+	player.posX = 22.0;
+	player.posY = 11.5;
+	player.dirX = -1.0;
+	player.dirY = 0.0;
+	player.planeX = 0.0;
 	player.planeY = 0.66;
 	player.moveSpeed = 0.05;
 	player.rotSpeed = 0.05;
@@ -71,7 +62,10 @@ void	ft_init_cub(t_data *data)
 void	ft_init(t_data *data)
 {
 	ft_init_mlx(data);
-	ft_init_img(data);
 	ft_init_player(data);
 	ft_init_cub(data);
+	ft_init_tex(data);
+	load_texture(data);
+	ft_init_img(data);
+	ft_init_buf(data);
 }

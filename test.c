@@ -1,5 +1,17 @@
-#include "mlx/mlx.h"
-#include "key_macos.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hupa <hupa@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/06/26 15:18:03 by yohlee            #+#    #+#             */
+/*   Updated: 2023/05/25 14:17:50 by hupa             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "mlx.h"
+
 #include <math.h>
 #include <string.h>
 #include <stdio.h>
@@ -10,8 +22,13 @@
 #define texHeight 64
 #define mapWidth 24
 #define mapHeight 24
-#define width 640
-#define height 480
+#define width 1280
+#define height 720
+# define KEY_ESC 65307
+# define KEY_A 97
+# define KEY_D 100
+# define KEY_W 119
+# define KEY_S 115
 
 typedef struct	s_img
 {
@@ -226,7 +243,7 @@ int	main_loop(t_info *info)
 
 int	key_press(int key, t_info *info)
 {
-	if (key == K_W)
+	if (key == KEY_W)
 	{
 		if (!worldMap[(int)(info->posX + info->dirX * info->moveSpeed)][(int)(info->posY)])
 			info->posX += info->dirX * info->moveSpeed;
@@ -234,7 +251,7 @@ int	key_press(int key, t_info *info)
 			info->posY += info->dirY * info->moveSpeed;
 	}
 	//move backwards if no wall behind you
-	if (key == K_S)
+	if (key == KEY_S)
 	{
 		if (!worldMap[(int)(info->posX - info->dirX * info->moveSpeed)][(int)(info->posY)])
 			info->posX -= info->dirX * info->moveSpeed;
@@ -242,7 +259,7 @@ int	key_press(int key, t_info *info)
 			info->posY -= info->dirY * info->moveSpeed;
 	}
 	//rotate to the right
-	if (key == K_D)
+	if (key == KEY_D)
 	{
 		//both camera direction and camera plane must be rotated
 		double oldDirX = info->dirX;
@@ -253,7 +270,7 @@ int	key_press(int key, t_info *info)
 		info->planeY = oldPlaneX * sin(-info->rotSpeed) + info->planeY * cos(-info->rotSpeed);
 	}
 	//rotate to the left
-	if (key == K_A)
+	if (key == KEY_A)
 	{
 		//both camera direction and camera plane must be rotated
 		double oldDirX = info->dirX;
@@ -263,7 +280,7 @@ int	key_press(int key, t_info *info)
 		info->planeX = info->planeX * cos(info->rotSpeed) - info->planeY * sin(info->rotSpeed);
 		info->planeY = oldPlaneX * sin(info->rotSpeed) + info->planeY * cos(info->rotSpeed);
 	}
-	if (key == K_ESC)
+	if (key == KEY_ESC)
 		exit(0);
 	mlx_clear_window(info->mlx, info->win);
 	main_loop(info);
@@ -288,14 +305,14 @@ void	load_texture(t_info *info)
 {
 	t_img	img;
 
-	load_image(info, info->texture[0], "textures/eagle.xpm", &img);
-	load_image(info, info->texture[1], "textures/redbrick.xpm", &img);
-	load_image(info, info->texture[2], "textures/purplestone.xpm", &img);
-	load_image(info, info->texture[3], "textures/greystone.xpm", &img);
-	load_image(info, info->texture[4], "textures/bluestone.xpm", &img);
-	load_image(info, info->texture[5], "textures/mossy.xpm", &img);
-	load_image(info, info->texture[6], "textures/wood.xpm", &img);
-	load_image(info, info->texture[7], "textures/colorstone.xpm", &img);
+	load_image(info, info->texture[0], "tex/textures/east.xpm", &img);
+	load_image(info, info->texture[1], "tex/textures/west.xpm", &img);
+	load_image(info, info->texture[2], "tex/textures/purplestone.xpm", &img);
+	load_image(info, info->texture[3], "tex/textures/east.xpm", &img);
+	load_image(info, info->texture[4], "tex/textures/bluestone.xpm", &img);
+	load_image(info, info->texture[5], "tex/textures/mossy.xpm", &img);
+	load_image(info, info->texture[6], "tex/textures/west.xpm", &img);
+	load_image(info, info->texture[7], "tex/textures/colorstone.xpm", &img);
 }
 
 int	main(void)
@@ -345,7 +362,7 @@ int	main(void)
 	info.img.data = (int *)mlx_get_data_addr(info.img.img, &info.img.bpp, &info.img.size_l, &info.img.endian);
 
 	mlx_loop_hook(info.mlx, &main_loop, &info);
-	mlx_hook(info.win, X_EVENT_KEY_PRESS, 0, &key_press, &info);
+	mlx_hook(info.win, X_EVENT_KEY_PRESS, 1L<<0, &key_press, &info);
 
 	mlx_loop(info.mlx);
 }

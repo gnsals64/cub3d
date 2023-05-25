@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hupa <hupa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 21:27:39 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/22 19:40:27 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:49:46 by hupa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	key_press(int key, t_data *data)
 	if (key == KEY_ESC)
 		exit(0);
 	mlx_clear_window(data->mlx.mlx_ptr, data->mlx.mlx_win);
+	draw_up_down(data);
 	main_loop(data);
 	return (0);
 }
