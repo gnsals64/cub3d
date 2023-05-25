@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:40:46 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/25 18:35:44 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/05/25 19:16:01 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_init_player(t_data *data)
 	player.posY = -1;
 	player.dirX = 0.0;
 	player.dirY = 0.0;
-	player.planeX = 0.66;
+	player.planeX = 0.0;
 	player.planeY = 0.0;
 	player.moveSpeed = 0.05;
 	player.rotSpeed = 0.05;

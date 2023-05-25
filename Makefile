@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+         #
+#    By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 16:37:06 by junhyupa          #+#    #+#              #
-#    Updated: 2023/05/25 18:12:18 by hunpark          ###   ########.fr        #
+#    Updated: 2023/05/25 19:34:02 by junhyupa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub3d
+NAME = cub3D
 
-CC = cc -g
+CC = cc -g -fsanitize=address
 FLAG = -Wall -Werror -Wextra -g -fsanitize=address
 
 INC = -I ./inc

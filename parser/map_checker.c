@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 19:05:28 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/05/25 16:11:13 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/25 19:21:55 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,16 +69,28 @@ void	check_user_direction(int x, int y, t_data *data)
 	if (data->cub.player > 1)
 		error_control("dup player Error", NULL, 1);
 	c = data->cub.map[y][x];
-	data->player.posX = x;
-	data->player.posY = y;
+	data->player.posX = x + 0.5;
+	data->player.posY = y + 0.5;
 	if (c == 'N')
-		data->player.dirY = 1;
-	if (c == 'W')
-		data->player.dirX = -1;
-	if (c == 'S')
+	{
+		data->player.planeX = 0.66;
 		data->player.dirY = -1;
+	}
+	if (c == 'W')
+	{
+		data->player.planeY = -0.66;
+		data->player.dirX = -1;
+	}
+	if (c == 'S')
+	{
+		data->player.planeX = -0.66;
+		data->player.dirY = 1;
+	}
 	if (c == 'E')
+	{
+		data->player.planeY = 0.66;
 		data->player.dirX = 1;
+	}
 }
 
 void	map_checker(char **map, t_cub *cub, t_data *data)
