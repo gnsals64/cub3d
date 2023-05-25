@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:57:27 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/05/25 16:12:45 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/25 16:15:39 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,14 @@ static void	parse_option(int fd, t_cub *cub)
 	{
 		if (ft_strlen(tmp) >= 1 && tmp[ft_strlen(tmp) - 1] == '\n')
 			tmp[ft_strlen(tmp) - 1] = 0;
-		if (!cub->texture[NO].path && !ft_strncmp(tmp, "NO ", 3) && ++cnt)
-			cub->texture[NO].path = ft_strdup(skip_space(&tmp[3]));
-		else if (!cub->texture[WE].path && !ft_strncmp(tmp, "WE ", 3) && ++cnt)
-			cub->texture[WE].path = ft_strdup(skip_space(&tmp[3]));
-		else if (!cub->texture[SO].path && !ft_strncmp(tmp, "SO ", 3) && ++cnt)
-			cub->texture[SO].path = ft_strdup(skip_space(&tmp[3]));
-		else if (!cub->texture[EA].path && !ft_strncmp(tmp, "EA ", 3) && ++cnt)
-			cub->texture[EA].path = ft_strdup(skip_space(&tmp[3]));
+		if (!cub->texture[NO] && !ft_strncmp(tmp, "NO ", 3) && ++cnt)
+			cub->texture[NO] = ft_strdup(skip_space(&tmp[3]));
+		else if (!cub->texture[WE] && !ft_strncmp(tmp, "WE ", 3) && ++cnt)
+			cub->texture[WE] = ft_strdup(skip_space(&tmp[3]));
+		else if (!cub->texture[SO] && !ft_strncmp(tmp, "SO ", 3) && ++cnt)
+			cub->texture[SO] = ft_strdup(skip_space(&tmp[3]));
+		else if (!cub->texture[EA] && !ft_strncmp(tmp, "EA ", 3) && ++cnt)
+			cub->texture[EA] = ft_strdup(skip_space(&tmp[3]));
 		else if (!cub->f_color && !ft_strncmp(tmp, "F ", 2) && ++cnt)
 			cub->f_color = parse_color(skip_space(&tmp[2]));
 		else if (!cub->c_color && !ft_strncmp(tmp, "C ", 2) && ++cnt)
@@ -89,18 +89,6 @@ static void	parse_option(int fd, t_cub *cub)
 	}
 	if (cnt < 6)
 		error_control("cub file Error3", NULL, 1);
-}
-
-void	texture_init(t_data *data)
-{
-	t_cub	*cub;
-	int	i;
-
-	cub = &data->cub;
-	i = 0;
-	while (i < 4)
-		cub->texture[i].texture = mlx_xpm_file_to_image(data->mlx.mlx_ptr, \
-			cub->texture[i].path, &cub->texture[i].texture_width, &cub->texture[i].texture_height);
 }
 
 void	parser(char *av, t_cub *cub, t_data *data)

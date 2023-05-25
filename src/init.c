@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:40:46 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/25 16:12:13 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/25 16:16:19 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,7 @@ void	ft_init_cub(t_data *data)
 	i = 0;
 	cub.map = NULL;
 	while (i < 4)
-	{
-		cub.texture[i].path = NULL;
-		cub.texture[i].texture = NULL;
-		cub.texture->texture_width = 0;
-		cub.texture->texture_height = 0;
-		i++;
-	}
+		cub.texture[i++] = NULL;
 	cub.f_color = 0;
 	cub.c_color = 0;
 	cub.map_width = 0;

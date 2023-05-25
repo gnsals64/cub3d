@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 14:08:22 by hunaprk           #+#    #+#             */
-/*   Updated: 2023/05/25 16:11:13 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/25 16:14:52 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,10 @@ enum direct{
 	EA,
 };
 
-typedef struct s_texture
-{
-	char	*path;
-	void	*texture;
-	int		texture_width;
-	int		texture_height;
-} t_texture;
-
 typedef struct s_cub
 {
 	char		**map;
-	t_texture	texture[4];
+	char		*texture[4];
 	int			f_color;
 	int			c_color;
 	int			map_width;
