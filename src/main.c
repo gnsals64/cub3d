@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hupa <hupa@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:40:17 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/25 13:41:00 by hupa             ###   ########.fr       */
+/*   Updated: 2023/05/25 16:12:39 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ static int	is_cub(char *av)
 	if (len < 5)
 		error_control(".cub file only Error", NULL, 1);
 	if (ft_strncmp(".cub", &av[len - 4], 4))
+		error_control(".cub file only Error", NULL, 1);
+	if (av[len - 5] == '/')
 		error_control(".cub file only Error", NULL, 1);
 	return (0);
 }

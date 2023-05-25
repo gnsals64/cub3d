@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 03:29:22 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/22 19:40:56 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/25 16:12:07 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	set_raydir(t_data *data, int x)
 {
 	(void)x;
+
 	if (data->ray.rayDirX < 0)
 	{
 		data->ray.stepX = -1;

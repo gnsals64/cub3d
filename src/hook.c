@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 21:27:39 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/25 15:37:35 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/05/25 16:12:45 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	key_exit(int keycode, t_data *data)
 {
-	(void)keycode;
 	(void)data;
+	(void)keycode;
 	exit(0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:57:27 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/05/22 19:47:44 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/25 16:12:45 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ static void	parse_option(int fd, t_cub *cub)
 	tmp = get_next_line(fd);
 	while(cnt < 6 && tmp && *tmp)
 	{
+		if (ft_strlen(tmp) >= 1 && tmp[ft_strlen(tmp) - 1] == '\n')
+			tmp[ft_strlen(tmp) - 1] = 0;
 		if (!cub->texture[NO].path && !ft_strncmp(tmp, "NO ", 3) && ++cnt)
 			cub->texture[NO].path = ft_strdup(skip_space(&tmp[3]));
 		else if (!cub->texture[WE].path && !ft_strncmp(tmp, "WE ", 3) && ++cnt)
@@ -85,6 +87,8 @@ static void	parse_option(int fd, t_cub *cub)
 		if (cnt < 6)
 			tmp = get_next_line(fd);
 	}
+	if (cnt < 6)
+		error_control("cub file Error3", NULL, 1);
 }
 
 void	texture_init(t_data *data)

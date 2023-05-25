@@ -3,22 +3,22 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+         #
+#    By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 16:37:06 by junhyupa          #+#    #+#              #
-#    Updated: 2023/05/25 15:53:45 by hunpark          ###   ########.fr        #
+#    Updated: 2023/05/25 16:10:10 by junhyupa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 
-CC = cc -g
+CC = cc
 FLAG = -Wall -Werror -Wextra -g -fsanitize=address
 
 INC = -I ./inc
 
-#MLX_DIR = ./minilibx-linux
-#MLX_EXEC = -L{MLX_DIR} -lmlx -lm -lX11 -lXext
+# MLX_DIR = ./minilibx-linux
+# MLX_EXEC = -L{MLX_DIR} -lmlx -lm -lX11 -lXext
 MLX_DIR = ./
 MLX_EXEC = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 
