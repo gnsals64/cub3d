@@ -6,11 +6,11 @@
 #    By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 16:37:06 by junhyupa          #+#    #+#              #
-#    Updated: 2023/05/25 16:10:10 by junhyupa         ###   ########.fr        #
+#    Updated: 2023/05/25 16:17:58 by junhyupa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub3d
+NAME = cub3D
 
 CC = cc
 FLAG = -Wall -Werror -Wextra -g -fsanitize=address
