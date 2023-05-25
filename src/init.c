@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hupa <hupa@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:40:46 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/22 13:54:36 by hupa             ###   ########.fr       */
+/*   Updated: 2023/05/25 14:49:19 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ void	ft_init_cub(t_data *data)
 	cub.c_color = 0;
 	cub.map_width = 0;
 	cub.map_height = 0;
+	cub.floor = 0;
+	cub.player = 0;
 	data->cub = cub;
 }
 
