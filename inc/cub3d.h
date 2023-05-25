@@ -6,7 +6,7 @@
 /*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 14:08:22 by hunaprk           #+#    #+#             */
-/*   Updated: 2023/05/25 15:54:09 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/05/25 18:26:45 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,22 +52,24 @@ enum direct{
 	EA,
 };
 
-typedef struct s_texture
-{
-	char	*path;
-	void	*texture;
-	int		texture_width;
-	int		texture_height;
-} t_texture;
+// typedef struct s_texture
+// {
+// 	char	*path;
+// 	void	*texture;
+// 	int		texture_width;
+// 	int		texture_height;
+// } t_texture;
 
 typedef struct s_cub
 {
 	char		**map;
-	t_texture	texture[4];
+	char 		*texture[4];
 	int			f_color;
 	int			c_color;
 	int			map_width;
 	int			map_height;
+	int			floor;
+	int			player;
 } t_cub;
 
 typedef struct s_mlx
@@ -176,7 +178,7 @@ static int	worldMap[mapWidth][mapHeight] =
 
 
 // init
-void	ft_init(t_data *data);
+void	ft_init(t_data *data, char *av);
 void	ft_init_mlx(t_data *data);
 void	ft_init_player(t_data *data);
 

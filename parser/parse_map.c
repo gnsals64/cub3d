@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 18:41:03 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/05/17 16:38:47 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/25 18:25:06 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,19 @@ void	parse_map(int fd, t_cub *cub)
 
 	map = NULL;
 	tmp = get_next_line(fd);
+	while (tmp && !ft_strncmp(tmp, "\n", 2))
+	{
+		free (tmp);
+		tmp = get_next_line(fd);
+	}
 	while (tmp && *tmp)
 	{
 		map = add_map(map, tmp);
 		tmp = get_next_line(fd);
 	}
 	free(tmp);
+	if (!map)
+		error_control("Invalid map error", NULL, 1);
 	get_width_height(cub, map);
 	i = 0;
 	cub->map = safe_calloc(sizeof(char *), cub->map_height + 1);

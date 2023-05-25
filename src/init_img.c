@@ -6,7 +6,7 @@
 /*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 11:59:49 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/25 15:47:39 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/05/25 18:04:36 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ void	load_texture(t_data *data)
 {
 	t_img	img;
 
-	load_image(data, data->tex.tex[NO], "tex/textures/wood.xpm", &img);
-	load_image(data, data->tex.tex[SO], "tex/textures/redbrick.xpm", &img);
-	load_image(data, data->tex.tex[WE], "tex/textures/eagle.xpm", &img);
-	load_image(data, data->tex.tex[EA], "tex/textures/east.xpm", &img);
+	load_image(data, data->tex.tex[NO], data->cub.texture[NO], &img);
+	load_image(data, data->tex.tex[SO], data->cub.texture[SO], &img);
+	load_image(data, data->tex.tex[WE], data->cub.texture[WE], &img);
+	load_image(data, data->tex.tex[EA], data->cub.texture[EA], &img);
 }

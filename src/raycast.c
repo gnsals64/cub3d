@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hupa <hupa@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 03:14:50 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/25 14:14:36 by hupa             ###   ########.fr       */
+/*   Updated: 2023/05/25 18:45:17 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	raycast(t_data *data)
 
 void	next(t_data *data, int x)
 {
-	int texNum = worldMap[data->ray.mapX][data->ray.mapY];
+	int texNum = worldMap[data->ray.mapY][data->ray.mapX];
 
 	double wallX;
 	if (data->ray.side == 0)

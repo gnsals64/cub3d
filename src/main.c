@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hupa <hupa@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:40:17 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/25 13:41:00 by hupa             ###   ########.fr       */
+/*   Updated: 2023/05/25 18:16:11 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ int	main(int ac, char **av)
 
 	if (ac != 2 || is_cub(av[1]))
 		error_control("worng argument Error", NULL, 1);
-	ft_init(&data);
-	parser(av[1], &data.cub, &data);
+	ft_init(&data, av[1]);
 	//print_info(&data.cub);
 	loop(&data);
 	return (0);

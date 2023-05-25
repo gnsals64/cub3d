@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hupa <hupa@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 03:42:24 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/22 04:10:21 by hupa             ###   ########.fr       */
+/*   Updated: 2023/05/25 18:44:36 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	dda(t_data *data)
 			data->ray.mapY += data->ray.stepY;
 			data->ray.side = 1;
 		}
-		if (worldMap[data->ray.mapX][data->ray.mapY] > 0)
+		if (data->cub.map[data->ray.mapY][data->ray.mapX] == '1')
 			data->ray.hit = 1;
 	}
 	if (data->ray.side == 0)
