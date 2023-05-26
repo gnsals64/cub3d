@@ -6,53 +6,39 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:57:27 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/05/26 16:58:57 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 17:39:58 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-static int	is_alldigit(char *s)
-{
-	int	len;
-
-	len = ft_strlen(s);
-	if (len == 0 || (len > 3 && s[3] != '\n'))
-		return (0);
-	while (s && *s)
-	{
-		if (!ft_isdigit(*s) && *s != '\n')
-			return (0);
-		s++;
-	}
-	return (1);
-}
-
 static int	parse_color(char *s)
 {
-	int		tmp;
-	int		i;
-	int		j;
-	char	**box;
+	int	i;
+	int	tmp;
+	int	rtn;
 
-	box = ft_split(s, ',');
 	i = 0;
-	tmp = 0;
-	while (box && box[i] && i < 3)
+	rtn = 0;
+	while (s && *s && ++i)
 	{
-		j = 0;
-		while (box[i][j] == ' ')
-			j++;
-		if (!is_alldigit(&box[i][j]))
-			error_control("Invalid color Error", NULL, 1);
-		tmp = tmp << 8;
-		tmp += atoi(&box[i][j]);
-		i++;
+		tmp = -1;
+		while (ft_isdigit(*s))
+		{
+			if (tmp < 0)
+				tmp = 0;
+			tmp *= 10;
+			tmp += *s++ - '0';
+			if (tmp > 255)
+				error_control("Invalid color range Error", NULL, 1);
+		}
+		if (tmp < 0 || (*s && (*s != ',' || i == 3)))
+			error_control("invalid color elements Error", NULL, 1);
+		rtn = rtn << 8;
+		rtn += tmp;
+		s++;
 	}
-	if (!box || box[i])
-		error_control("color parsing failed Error", NULL, 1);
-	free_box(box);
-	return (tmp);
+	return (rtn);
 }
 
 static char	*skip_space(char *s)
