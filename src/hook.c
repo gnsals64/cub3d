@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 21:27:39 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/26 13:59:23 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 15:00:55 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	key_press(int key, t_data *data)
 			data->player.pos_y -= data->player.dir_y * data->player.move_speed;
 		printf("x : %f y:%f\n", data->player.pos_x, data->player.pos_y);
 	}
-	if (key == KEY_D)
+	if (key == KEY_RIGHT)
 	{
 		double olddir_x = data->player.dir_x;
 		data->player.dir_x = data->player.dir_x * cos(data->player.rot_speed) - data->player.dir_y * sin(data->player.rot_speed);
@@ -46,7 +46,7 @@ int	key_press(int key, t_data *data)
 		data->player.plane_x = data->player.plane_x * cos(data->player.rot_speed) - data->player.plane_y * sin(data->player.rot_speed);
 		data->player.plane_y = oldplane_x * sin(data->player.rot_speed) + data->player.plane_y * cos(data->player.rot_speed);
 	}
-	if (key == KEY_A)
+	if (key == KEY_LEFT)
 	{
 		double olddir_x = data->player.dir_x;
 		data->player.dir_x = data->player.dir_x * cos(-data->player.rot_speed) - data->player.dir_y * sin(-data->player.rot_speed);

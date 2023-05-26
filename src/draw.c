@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 03:39:55 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/26 14:06:42 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/05/26 14:58:50 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ int		check_raydir(t_data *data)
 	if(data->ray.side == 1)
 	{
 		if(data->ray.raydir_y > 0)
-			return (SO);
-		else
 			return (NO);
+		else
+			return (SO);
 	}
 	else
 	{
 		if(data->ray.raydir_x > 0)
-			return (EA);
-		else
 			return (WE);
+		else
+			return (EA);
 	}
 }
 
