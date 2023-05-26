@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 14:08:22 by hunaprk           #+#    #+#             */
-/*   Updated: 2023/05/26 12:43:54 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 12:48:39 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,6 @@
 void	ft_init(t_data *data, char *av);
 void	ft_init_mlx(t_data *data);
 void	ft_init_player(t_data *data);
-
-// utils
-void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 // hook
 int		key_exit(t_data *data);

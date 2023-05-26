@@ -6,7 +6,7 @@
 #    By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 16:37:06 by junhyupa          #+#    #+#              #
-#    Updated: 2023/05/26 12:13:36 by junhyupa         ###   ########.fr        #
+#    Updated: 2023/05/26 12:48:55 by junhyupa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ SRCS = $(FILES:=.c)
 PARSER_SRC := parse.c parse_map.c map_checker.c
 PARSER_SRCS := $(addprefix ./parser/,$(PARSER_SRC))
 
-UTIL_SRC := err.c free.c mlx_utils.c
+UTIL_SRC := err.c free.c
 UTIL_SRCS := $(addprefix ./utils/,$(UTIL_SRC))
 
 GNL_SRC := get_next_line.c get_next_line_utils.c

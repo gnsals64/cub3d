@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 18:23:58 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/05/26 12:45:40 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 12:48:07 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void	free_box(char **box)
 	int	i;
 
 	i = 0;
-	while(box && box[i])
+	while (box && box[i])
 		free(box[i++]);
-	if(box)
+	if (box)
 		free(box[i]);
 	free(box);
 }
