@@ -6,7 +6,7 @@
 #    By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 16:37:06 by junhyupa          #+#    #+#              #
-#    Updated: 2023/05/26 13:14:15 by junhyupa         ###   ########.fr        #
+#    Updated: 2023/05/26 15:34:21 by junhyupa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ MLX_EXEC = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 LIBFT := ./libft/libft.a
 LIBFT_DIR := ./libft/
 
-FILES = $(addprefix ./src/, dda draw hook init_raycast init loop main raycast init_img)
+FILES = $(addprefix ./src/, dda draw hook init_raycast init loop main raycast init_img key_direction)
 SRCS = $(FILES:=.c)
 
 PARSER_SRC := parse.c parse_map.c map_checker.c parse_option.c

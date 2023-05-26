@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 14:08:22 by hunaprk           #+#    #+#             */
-/*   Updated: 2023/05/26 15:18:29 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 15:38:26 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	ft_init_mlx(t_data *data);
 void	ft_init_player(t_data *data);
 
 //hook
-int		key_exit(t_data *data);
+int		keypress_exit(t_data *data);
 int		key_press(int key, t_data *data);
 
 //loop
@@ -86,5 +86,10 @@ void	ft_init_tex(t_data *data);
 void	load_texture(t_data *data);
 void	load_image(t_data *data, int *texture, char *path, t_img *img);
 
+//key_direction
+void	keypress_w(t_data *data);
+void	keypress_a(t_data *data);
+void	keypress_s(t_data *data);
+void	keypress_d(t_data *data);
 
 #endif
