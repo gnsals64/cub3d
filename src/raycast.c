@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 03:14:50 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/26 15:19:59 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 15:54:57 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,6 @@ void	raycast(t_data *data)
 	int	x;
 
 	x = 0;
-	// for (int i = 0; i < HEIGHT; i++)
-	// {
-	// 	for (int j = 0; j < WIDTH; j++)
-	// 	{
-	// 		if (i > HEIGHT / 2)
-	// 			data->tex.buf[i][j] = data->cub.f_color;
-	// 		else
-	// 			data->tex.buf[i][j] = data->cub.c_color;
-	// 	}
-	// }
 	draw_ceiling_floor(data);
 	while (x < WIDTH)
 	{
@@ -66,15 +56,3 @@ void	next(t_data *data, int x)
 		data->tex.re_buf = 1;
 	}
 }
-
-// void	draw_all(t_data *data)
-// {
-// 	for (int y = 0; y < HEIGHT; y++)
-// 	{
-// 		for (int x = 0; x < WIDTH; x++)
-// 		{
-// 			data->img.addr[y * WIDTH + x] = data->tex.buf[y][x];
-// 		}
-// 	}
-// 	mlx_put_image_to_window(data->mlx.mlx_ptr, data->mlx.mlx_win, data->img.img, 0, 0);
-// }
