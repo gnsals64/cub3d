@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 14:08:22 by hunaprk           #+#    #+#             */
-/*   Updated: 2023/05/26 15:00:23 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 15:03:23 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,32 +47,34 @@
 # define TEX_W 64
 # define PLAYER_SIZE 10
 
-// init
+//init
 void	ft_init(t_data *data, char *av);
 void	ft_init_mlx(t_data *data);
 void	ft_init_player(t_data *data);
 
-// hook
+//hook
 int		key_exit(t_data *data);
 int		key_press(int key, t_data *data);
 
-// loop
+//loop
 int		main_loop(t_data *data);
 void	loop(t_data *data);
 
-// init_raycast
+//init_raycast
 void	init_ray(t_data *data, int x);
 
-// raycast
+//raycast
 void	raycast(t_data *data);
 void	set_raydir(t_data *data, int x);
 
-// dda
+//dda
 void	dda(t_data *data);
 
-// draw
+//draw
 int		check_raydir(t_data *data);
-void	draw(t_data *data);
+void	check_drawing_range(t_data *data);
+void	draw_ceiling_floor(t_data *data);
+void	draw_all(t_data *data);
 
 //init_image
 void	ft_init_img(t_data *data);
@@ -82,5 +84,5 @@ void	load_texture(t_data *data);
 void	load_image(t_data *data, int *texture, char *path, t_img *img);
 
 void	next(t_data *data, int x);
-void	draw_all(t_data *data);
+
 #endif
