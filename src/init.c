@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:40:46 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/26 14:06:42 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/05/26 16:00:12 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-void	ft_init_mlx(t_data *data)
+static void	ft_init_mlx(t_data *data)
 {
 	t_mlx	mlx;
 
@@ -21,7 +21,7 @@ void	ft_init_mlx(t_data *data)
 	data->mlx = mlx;
 }
 
-void	ft_init_player(t_data *data)
+static void	ft_init_player(t_data *data)
 {
 	t_player	player;
 
@@ -37,7 +37,7 @@ void	ft_init_player(t_data *data)
 	data->player = player;
 }
 
-void	ft_init_cub(t_data *data)
+static void	ft_init_cub(t_data *data)
 {
 	t_cub	cub;
 	int		i;
