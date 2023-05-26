@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 20:56:12 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/05/26 13:59:23 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 14:27:07 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ typedef struct s_player
 	double	plane_y;
 	double	move_speed;
 	double	rot_speed;
+	double	wall_x;
+	int		texnum;
 	int		player_size;
 }	t_player;
 
