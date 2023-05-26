@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 03:39:55 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/26 15:14:58 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/05/26 15:17:14 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,20 +67,18 @@ void	draw_ceiling_floor(t_data *data)
 	int	j;
 
 	i = 0;
-	while (i < HEIGTH)
+	while (i < HEIGHT)
 	{
 		j = 0;
-		while ()
-	}
-		for (int i = 0; i < HEIGHT; i++)
-	{
-		for (int j = 0; j < WIDTH; j++)
+		while (j < WIDTH)
 		{
 			if (i > HEIGHT / 2)
 				data->tex.buf[i][j] = data->cub.f_color;
 			else
 				data->tex.buf[i][j] = data->cub.c_color;
+			j++;
 		}
+		i++;
 	}
 }
 

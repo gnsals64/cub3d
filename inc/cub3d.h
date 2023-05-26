@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 14:08:22 by hunaprk           #+#    #+#             */
-/*   Updated: 2023/05/26 15:03:23 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 15:18:29 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,19 +62,22 @@ void	loop(t_data *data);
 
 //init_raycast
 void	init_ray(t_data *data, int x);
+void	set_raydir(t_data *data, int x);
 
 //raycast
 void	raycast(t_data *data);
-void	set_raydir(t_data *data, int x);
+void	next(t_data *data, int x);
+void	draw_all(t_data *data);
 
 //dda
 void	dda(t_data *data);
 
 //draw
 int		check_raydir(t_data *data);
-void	check_drawing_range(t_data *data);
-void	draw_ceiling_floor(t_data *data);
+void	draw(t_data *data);
 void	draw_all(t_data *data);
+void	draw_ceiling_floor(t_data *data);
+void	check_drawing_range(t_data *data);
 
 //init_image
 void	ft_init_img(t_data *data);
@@ -83,6 +86,5 @@ void	ft_init_tex(t_data *data);
 void	load_texture(t_data *data);
 void	load_image(t_data *data, int *texture, char *path, t_img *img);
 
-void	next(t_data *data, int x);
 
 #endif
