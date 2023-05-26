@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 03:39:55 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/26 15:17:14 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 16:33:00 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	check_raydir(t_data *data)
 	}
 }
 
-void	draw(t_data *data)
+void	check_drawing_range(t_data *data)
 {
 	data->ray.line_height = (int)(HEIGHT / data->ray.perp_wall_dist);
 	data->ray.draw_start = -data->ray.line_height / 2 + HEIGHT / 2;
@@ -80,9 +80,4 @@ void	draw_ceiling_floor(t_data *data)
 		}
 		i++;
 	}
-}
-
-void	check_drawing_range(t_data *data)
-{
-
 }

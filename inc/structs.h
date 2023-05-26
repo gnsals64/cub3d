@@ -6,7 +6,7 @@
 /*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 20:56:12 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/05/26 14:27:07 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/05/26 16:28:42 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ typedef struct s_player
 	double	plane_y;
 	double	move_speed;
 	double	rot_speed;
-	double	wall_x;
-	int		texnum;
 	int		player_size;
 }	t_player;
 
@@ -83,6 +81,13 @@ typedef struct s_ray
 	int		draw_start;
 	int		draw_end;
 	int		color;
+	double	wall_x;
+	int		texnum;
+	int		tex_x;
+	int		tex_y;
+	double	step;
+	double	tex_pos;
+
 }	t_ray;
 
 typedef struct s_tex

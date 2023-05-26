@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 14:08:22 by hunaprk           #+#    #+#             */
-/*   Updated: 2023/05/26 16:06:07 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 16:39:41 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include "util.h"
 # include "parser.h"
 # include <mlx.h>
-# include <stdio.h>
 # include <string.h>
 # include <math.h>
 # include <unistd.h>
@@ -63,7 +62,7 @@ void	set_raydir(t_data *data, int x);
 
 //raycast
 void	raycast(t_data *data);
-void	next(t_data *data, int x);
+void	cpy_buf(t_data *data, int x);
 void	draw_all(t_data *data);
 
 //dda
@@ -71,10 +70,10 @@ void	dda(t_data *data);
 
 //draw
 int		check_raydir(t_data *data);
-void	draw(t_data *data);
+void	check_drawing_range(t_data *data);
+void	check_drawing_point(t_data *data);
 void	draw_all(t_data *data);
 void	draw_ceiling_floor(t_data *data);
-void	check_drawing_range(t_data *data);
 
 //init_image
 void	ft_init_img(t_data *data);

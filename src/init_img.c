@@ -6,7 +6,7 @@
 /*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 11:59:49 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/26 15:10:41 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/05/26 16:42:25 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	load_image(t_data *data, int *texture, char *path, t_img *img)
 	i = 0;
 	img->img = mlx_xpm_file_to_image(data->mlx.mlx_ptr, path, &img->img_width,
 			&img->img_height);
+	if (!img->img)
+		error_control("Not found xpm file Error", NULL, 1);
 	img->addr = (int *)mlx_get_data_addr(img->img, &img->bpp, &img->line_size,
 			&img->endian);
 	while (i < img->img_height)
