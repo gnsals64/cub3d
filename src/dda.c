@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 03:42:24 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/26 13:57:19 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 15:10:12 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ void	dda(t_data *data)
 			data->ray.hit = 1;
 	}
 	if (data->ray.side == 0)
-		data->ray.perp_wall_dist = (data->ray.map_x - data->player.pos_x + (1 - data->ray.step_x) / 2) / data->ray.raydir_x;
+		data->ray.perp_wall_dist = (data->ray.map_x - data->player.pos_x
+				+ (1 - data->ray.step_x) / 2) / data->ray.raydir_x;
 	else
-		data->ray.perp_wall_dist = (data->ray.map_y - data->player.pos_y + (1 - data->ray.step_y) / 2) / data->ray.raydir_y;
+		data->ray.perp_wall_dist = (data->ray.map_y - data->player.pos_y
+				+ (1 - data->ray.step_y) / 2) / data->ray.raydir_y;
 }

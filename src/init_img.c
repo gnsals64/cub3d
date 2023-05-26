@@ -6,7 +6,7 @@
 /*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 11:59:49 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/26 14:06:42 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/05/26 15:10:41 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	ft_init_img(t_data *data)
 	t_img	img;
 
 	img.img = mlx_new_image(data->mlx.mlx_ptr, WIDTH, HEIGHT);
-	img.addr = (int *)mlx_get_data_addr(img.img, &img.bpp, &img.line_size, &img.endian);
+	img.addr = (int *)mlx_get_data_addr(img.img, &img.bpp, &img.line_size,
+			&img.endian);
 	data->img = img;
 }
 
@@ -49,8 +50,10 @@ void	load_image(t_data *data, int *texture, char *path, t_img *img)
 	int	j;
 
 	i = 0;
-	img->img = mlx_xpm_file_to_image(data->mlx.mlx_ptr, path, &img->img_width, &img->img_height);
-	img->addr = (int *)mlx_get_data_addr(img->img, &img->bpp, &img->line_size, &img->endian);
+	img->img = mlx_xpm_file_to_image(data->mlx.mlx_ptr, path, &img->img_width,
+			&img->img_height);
+	img->addr = (int *)mlx_get_data_addr(img->img, &img->bpp, &img->line_size,
+			&img->endian);
 	while (i < img->img_height)
 	{
 		j = 0;
