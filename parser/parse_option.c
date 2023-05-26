@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:57:27 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/05/26 17:39:58 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 17:47:46 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,21 @@ static int	parse_color(char *s)
 	while (s && *s && ++i)
 	{
 		tmp = -1;
-		while (ft_isdigit(*s))
+		while (ft_isdigit(*s) && tmp <= 255)
 		{
 			if (tmp < 0)
 				tmp = 0;
 			tmp *= 10;
 			tmp += *s++ - '0';
-			if (tmp > 255)
-				error_control("Invalid color range Error", NULL, 1);
 		}
-		if (tmp < 0 || (*s && (*s != ',' || i == 3)))
+		if (tmp < 0 || tmp > 255 || (*s && (*s != ',' || i == 3)))
 			error_control("invalid color elements Error", NULL, 1);
 		rtn = rtn << 8;
 		rtn += tmp;
 		s++;
 	}
+	if (i != 3)
+		error_control("invalid color elements Error", NULL, 1);
 	return (rtn);
 }
 
