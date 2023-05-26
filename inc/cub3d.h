@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 14:08:22 by hunaprk           #+#    #+#             */
-/*   Updated: 2023/05/26 13:20:42 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 14:06:42 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,8 @@
 # define KEY_W 13
 # define KEY_S 1
 
-# define mapWidth 24
-# define mapHeight 24
-# define width 1280
-# define height 720
+# define WIDTH 1280
+# define HEIGHT 720
 # define MINI_SCALE 1
 # define TEX_H 64
 # define TEX_W 64

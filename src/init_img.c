@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_img.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 11:59:49 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/26 12:13:50 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 14:06:42 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_init_img(t_data *data)
 {
 	t_img	img;
 
-	img.img = mlx_new_image(data->mlx.mlx_ptr, width, height);
+	img.img = mlx_new_image(data->mlx.mlx_ptr, WIDTH, HEIGHT);
 	img.addr = (int *)mlx_get_data_addr(img.img, &img.bpp, &img.line_size, &img.endian);
 	data->img = img;
 }
@@ -27,9 +27,9 @@ void	ft_init_buf(t_data *data)
 	int	j;
 
 	i = 0;
-	data->tex.buf = safe_calloc(sizeof(int *), height);
-	while (i < height)
-		data->tex.buf[i++] = safe_calloc(sizeof(int), width);
+	data->tex.buf = safe_calloc(sizeof(int *), HEIGHT);
+	while (i < HEIGHT)
+		data->tex.buf[i++] = safe_calloc(sizeof(int), WIDTH);
 	data->tex.re_buf = 0;
 }
 

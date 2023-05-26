@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_raycast.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 03:29:22 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/26 13:57:19 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 14:06:08 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	set_raydir(t_data *data, int x)
 
 void	init_ray(t_data *data, int x)
 {
-	data->ray.camera_x = 2 * x / (double)width - 1;
+	data->ray.camera_x = 2 * x / (double)WIDTH - 1;
 	data->ray.raydir_x = data->player.dir_x + data->player.plane_x * data->ray.camera_x;
 	data->ray.raydir_y = data->player.dir_y + data->player.plane_y * data->ray.camera_x;
 	data->ray.map_x = (int)data->player.pos_x;

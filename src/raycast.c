@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 03:14:50 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/26 13:58:00 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 14:06:42 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ void	raycast(t_data *data)
 	int	x;
 
 	x = 0;
-	for (int i = 0; i < height; i++)
+	for (int i = 0; i < HEIGHT; i++)
 	{
-		for (int j = 0; j < width; j++)
+		for (int j = 0; j < WIDTH; j++)
 		{
-			if (i > height / 2)
+			if (i > HEIGHT / 2)
 				data->tex.buf[i][j] = data->cub.f_color;
 			else
 				data->tex.buf[i][j] = data->cub.c_color;
 		}
 	}
-	while (x < width)
+	while (x < WIDTH)
 	{
 		init_ray(data, x);
 		dda(data);
@@ -53,7 +53,7 @@ void	next(t_data *data, int x)
 	if (data->ray.side == 1 && data->ray.raydir_y < 0)
 		texX = TEX_W - texX - 1;
 	double step = 1.0 * TEX_H / data->ray.line_height;
-	double texPos = (data->ray.draw_start - height / 2 + data->ray.line_height / 2) * step;
+	double texPos = (data->ray.draw_start - HEIGHT / 2 + data->ray.line_height / 2) * step;
 	for (int y = data->ray.draw_start; y < data->ray.draw_end; y++)
 	{
 		int texY = (int)texPos & (TEX_H - 1);
@@ -68,11 +68,11 @@ void	next(t_data *data, int x)
 
 void	draw_all(t_data *data)
 {
-	for (int y = 0; y < height; y++)
+	for (int y = 0; y < HEIGHT; y++)
 	{
-		for (int x = 0; x < width; x++)
+		for (int x = 0; x < WIDTH; x++)
 		{
-			data->img.addr[y * width + x] = data->tex.buf[y][x];
+			data->img.addr[y * WIDTH + x] = data->tex.buf[y][x];
 		}
 	}
 	mlx_put_image_to_window(data->mlx.mlx_ptr, data->mlx.mlx_win, data->img.img, 0, 0);

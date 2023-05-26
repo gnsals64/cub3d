@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:40:46 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/26 13:59:23 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 14:06:42 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_init_mlx(t_data *data)
 	t_mlx	mlx;
 
 	mlx.mlx_ptr = mlx_init();
-	mlx.mlx_win = mlx_new_window(mlx.mlx_ptr, width, height, "cub3d");
+	mlx.mlx_win = mlx_new_window(mlx.mlx_ptr, WIDTH, HEIGHT, "cub3d");
 	data->mlx = mlx;
 }
 

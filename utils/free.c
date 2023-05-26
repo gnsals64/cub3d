@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 18:23:58 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/05/26 12:48:07 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 14:06:42 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_tex(t_data *data)
 	int	i;
 
 	i = 0;
-	while (i < height)
+	while (i < HEIGHT)
 		free(data->tex.buf[i++]);
 	free(data->tex.buf);
 	i = 0;
