@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_img.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 11:59:49 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/25 18:04:36 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/05/26 12:13:50 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,9 @@ void	ft_init_buf(t_data *data)
 	int	j;
 
 	i = 0;
-	data->tex.buf = (int **)malloc(sizeof(int *) * height);
-	if (!data->tex.buf)
-		exit(1);
+	data->tex.buf = safe_calloc(sizeof(int *), height);
 	while (i < height)
-	{
-		j = 0;
-		data->tex.buf[i] = (int *)malloc(sizeof(int) * width);
-		if (!data->tex.buf[i])
-			exit(1);
-		while (j < height)
-			data->tex.buf[i][j++] = 0;
-		i++;
-	}
+		data->tex.buf[i++] = safe_calloc(sizeof(int), width);
 	data->tex.re_buf = 0;
 }
 
@@ -50,15 +40,7 @@ void	ft_init_tex(t_data *data)
 
 	i = 0;
 	while (i < 4)
-	{
-		data->tex.tex[i] = (int *)malloc(sizeof(int) * TEX_H * TEX_W);
-		if (!data->tex.tex[i])
-			exit(1);
-		j = 0;
-		while (j < TEX_H * TEX_W)
-			data->tex.tex[i][j++] = 0;
-		i++;
-	}
+		data->tex.tex[i++] = safe_calloc(sizeof(int), TEX_H * TEX_W);
 }
 
 void	load_image(t_data *data, int *texture, char *path, t_img *img)

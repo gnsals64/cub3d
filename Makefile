@@ -6,7 +6,7 @@
 #    By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 16:37:06 by junhyupa          #+#    #+#              #
-#    Updated: 2023/05/25 20:58:05 by junhyupa         ###   ########.fr        #
+#    Updated: 2023/05/26 12:13:36 by junhyupa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,6 @@ UTIL_SRCS := $(addprefix ./utils/,$(UTIL_SRC))
 
 GNL_SRC := get_next_line.c get_next_line_utils.c
 GNL_SRCS := $(addprefix ./GNL/,$(GNL_SRC))
-# ${CC} -g ${SRCS} ${MLX_EXEC} ${INC} -o ${NAME}
 OBJS := $(SRCS:.c=.o) $(PARSER_SRCS:.c=.o) $(UTIL_SRCS:.c=.o) $(GNL_SRCS:.c=.o)
 
 all : ${NAME}

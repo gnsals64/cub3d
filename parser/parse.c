@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:57:27 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/05/25 16:15:39 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 12:24:51 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static int		parse_color(char *s)
 {
 	int		tmp;
 	int		i;
+	int		j;
 	char	**box;
 
 	box = ft_split(s, ',');
@@ -39,14 +40,17 @@ static int		parse_color(char *s)
 	tmp = 0;
 	while(box && box[i] && i < 3)
 	{
-		if (!is_alldigit(box[i]))
-			error_control("cub file Error1", NULL, 1);
+		j = 0;
+		while (box[i][j] == ' ')
+			j++;
+		if (!is_alldigit(&box[i][j]))
+			error_control("Invalid color Error", NULL, 1);
 		tmp = tmp << 8;
-		tmp += atoi(box[i]);
+		tmp += atoi(&box[i][j]);
 		i++;
 	}
 	if (!box || box[i])
-		error_control("cub file Error2", NULL, 1);
+		error_control("color parsing failed Error", NULL, 1);
 	free_box(box);
 	return (tmp);
 }
@@ -82,13 +86,13 @@ static void	parse_option(int fd, t_cub *cub)
 		else if (!cub->c_color && !ft_strncmp(tmp, "C ", 2) && ++cnt)
 			cub->c_color = parse_color(skip_space(&tmp[2]));
 		else if (ft_strncmp(tmp, "\n", 1) && cnt < 6)
-			error_control("cub file Error3", NULL, 1);
+			error_control("Invalid options Error", NULL, 1);
 		free(tmp);
 		if (cnt < 6)
 			tmp = get_next_line(fd);
 	}
 	if (cnt < 6)
-		error_control("cub file Error3", NULL, 1);
+		error_control("Need all options Error", NULL, 1);
 }
 
 void	parser(char *av, t_cub *cub, t_data *data)

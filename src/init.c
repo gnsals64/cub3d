@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:40:46 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/25 19:16:01 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 12:22:25 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	ft_init_cub(t_data *data)
 	cub.c_color = 0;
 	cub.map_width = 0;
 	cub.map_height = 0;
-	cub.floor = 0;
 	cub.player = 0;
 	data->cub = cub;
 }

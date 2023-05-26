@@ -6,17 +6,16 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 21:27:39 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/25 19:55:09 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 12:45:22 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-int	key_exit(int keycode, t_data *data)
-{
-	(void)keycode;
-	(void)data;
-	exit(0);
+int	key_exit(t_data *data)
+{	
+	free_all(data);
+	exit (0);
 }
 
 int	key_press(int key, t_data *data)
@@ -57,7 +56,7 @@ int	key_press(int key, t_data *data)
 		data->player.planeY = oldPlaneX * sin(-data->player.rotSpeed) + data->player.planeY * cos(-data->player.rotSpeed);
 	}
 	if (key == KEY_ESC)
-		exit(0);
+		key_exit(data);
 	mlx_clear_window(data->mlx.mlx_ptr, data->mlx.mlx_win);
 	main_loop(data);
 	return (0);

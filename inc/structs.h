@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 20:56:12 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/05/25 20:56:47 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 12:17:42 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ typedef struct s_cub
 	int			c_color;
 	int			map_width;
 	int			map_height;
-	int			floor;
 	int			player;
 } t_cub;
 

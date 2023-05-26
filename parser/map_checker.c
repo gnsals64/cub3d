@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 19:05:28 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/05/25 19:21:55 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 12:17:23 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,7 @@ static int	is_elements(char c, t_data *data)
 		return (3);
 	}
 	else if (c == '0')
-	{
-		if(data)
-			data->cub.floor++;
 		return (4);
-	}
 	return (0);
 }
 
@@ -67,7 +63,7 @@ void	check_user_direction(int x, int y, t_data *data)
 	char	c;
 
 	if (data->cub.player > 1)
-		error_control("dup player Error", NULL, 1);
+		error_control("Put one player Error", NULL, 1);
 	c = data->cub.map[y][x];
 	data->player.posX = x + 0.5;
 	data->player.posY = y + 0.5;
@@ -109,12 +105,12 @@ void	map_checker(char **map, t_cub *cub, t_data *data)
 		{
 			elements = is_elements(map[y][x], data);
 			if (elements == 0)
-				error_control("map elements error", NULL, 1);
+				error_control("Invailid map elements Error", NULL, 1);
 			if ((y == 0 || y == cub->map_height || x == 0) && \
 				(map[y][x] != ' ' && map[y][x] != '1'))
-				error_control("map error", NULL, 1);
+				error_control("need surrounded by wall map Error", NULL, 1);
 			if (elements >= 3 && check_caldinal(map, cub, x, y))
-				error_control("map error2", NULL, 1);
+				error_control("need surrounded by wall map Error", NULL, 1);
 			if (elements == 3)
 				check_user_direction(x, y, data);
 			x++;
@@ -122,5 +118,5 @@ void	map_checker(char **map, t_cub *cub, t_data *data)
 		y++;
 	}
 	if (data->cub.player == 0)
-		error_control("No player error", NULL, 1);
+		error_control("No player Error", NULL, 1);
 }
