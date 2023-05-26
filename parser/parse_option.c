@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_option.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:57:27 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/05/26 13:13:22 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 16:53:55 by hunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ static char	*skip_space(char *s)
 
 static int	get_option_value(t_cub *cub, char *tmp)
 {
+	if (ft_strlen(tmp) >= 1 && tmp[ft_strlen(tmp) - 1] == '\n')
+		tmp[ft_strlen(tmp) - 1] = 0;
 	if (!cub->texture[NO] && !ft_strncmp(tmp, "NO ", 3))
 		cub->texture[NO] = ft_strdup(skip_space(&tmp[3]));
 	else if (!cub->texture[WE] && !ft_strncmp(tmp, "WE ", 3))
@@ -76,7 +78,7 @@ static int	get_option_value(t_cub *cub, char *tmp)
 		cub->f_color = parse_color(skip_space(&tmp[2]));
 	else if (!cub->c_color && !ft_strncmp(tmp, "C ", 2))
 		cub->c_color = parse_color(skip_space(&tmp[2]));
-	else if (ft_strncmp(tmp, "\n", 1))
+	else if (ft_strncmp(tmp, "\0", 1))
 		return (0);
 	return (1);
 }
@@ -90,8 +92,6 @@ void	parse_option(int fd, t_cub *cub)
 	tmp = get_next_line(fd);
 	while (cnt < 6 && tmp && *tmp)
 	{
-		if (ft_strlen(tmp) >= 1 && tmp[ft_strlen(tmp) - 1] == '\n')
-			tmp[ft_strlen(tmp) - 1] = 0;
 		if (!get_option_value(cub, tmp) && cnt < 6)
 			error_control("Invalid option value error", NULL, 1);
 		else
