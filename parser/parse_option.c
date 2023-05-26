@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_option.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:57:27 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/05/26 16:53:55 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/05/26 16:58:57 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ static int	get_option_value(t_cub *cub, char *tmp)
 	else if (!cub->c_color && !ft_strncmp(tmp, "C ", 2))
 		cub->c_color = parse_color(skip_space(&tmp[2]));
 	else if (ft_strncmp(tmp, "\0", 1))
+		error_control("Invalid option value error", NULL, 1);
+	else
 		return (0);
 	return (1);
 }
@@ -92,9 +94,7 @@ void	parse_option(int fd, t_cub *cub)
 	tmp = get_next_line(fd);
 	while (cnt < 6 && tmp && *tmp)
 	{
-		if (!get_option_value(cub, tmp) && cnt < 6)
-			error_control("Invalid option value error", NULL, 1);
-		else
+		if (get_option_value(cub, tmp))
 			++cnt;
 		free(tmp);
 		if (cnt < 6)
