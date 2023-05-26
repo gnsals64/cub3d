@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 03:14:50 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/25 20:52:04 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 13:58:00 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,18 @@ void	next(t_data *data, int x)
 
 	double wallX;
 	if (data->ray.side == 0)
-		wallX = -(data->player.posY + data->ray.perpWallDist * data->ray.rayDirY);
+		wallX = -(data->player.pos_y + data->ray.perp_wall_dist * data->ray.raydir_y);
 	else
-		wallX = -(data->player.posX + data->ray.perpWallDist * data->ray.rayDirX);
+		wallX = -(data->player.pos_x + data->ray.perp_wall_dist * data->ray.raydir_x);
 	wallX -= floor(wallX);
 	int texX = (int)(wallX * (double)TEX_W);
-	if (data->ray.side == 0 && data->ray.rayDirX > 0)
+	if (data->ray.side == 0 && data->ray.raydir_x > 0)
 		texX = TEX_W - texX - 1;
-	if (data->ray.side == 1 && data->ray.rayDirY < 0)
+	if (data->ray.side == 1 && data->ray.raydir_y < 0)
 		texX = TEX_W - texX - 1;
-	double step = 1.0 * TEX_H / data->ray.lineHeight;
-	double texPos = (data->ray.drawStart - height / 2 + data->ray.lineHeight / 2) * step;
-	for (int y = data->ray.drawStart; y < data->ray.drawEnd; y++)
+	double step = 1.0 * TEX_H / data->ray.line_height;
+	double texPos = (data->ray.draw_start - height / 2 + data->ray.line_height / 2) * step;
+	for (int y = data->ray.draw_start; y < data->ray.draw_end; y++)
 	{
 		int texY = (int)texPos & (TEX_H - 1);
 		texPos += step;

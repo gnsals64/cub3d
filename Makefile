@@ -6,7 +6,7 @@
 #    By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 16:37:06 by junhyupa          #+#    #+#              #
-#    Updated: 2023/05/26 12:48:55 by junhyupa         ###   ########.fr        #
+#    Updated: 2023/05/26 13:14:15 by junhyupa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ LIBFT_DIR := ./libft/
 FILES = $(addprefix ./src/, dda draw hook init_raycast init loop main raycast init_img)
 SRCS = $(FILES:=.c)
 
-PARSER_SRC := parse.c parse_map.c map_checker.c
+PARSER_SRC := parse.c parse_map.c map_checker.c parse_option.c
 PARSER_SRCS := $(addprefix ./parser/,$(PARSER_SRC))
 
 UTIL_SRC := err.c free.c

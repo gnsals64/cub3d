@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 18:41:03 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/05/25 18:25:06 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 13:15:44 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,13 @@ static void	get_width_height(t_cub *cub, char **map)
 	cub->map_height = map_height;
 }
 
-
 static char	**add_map(char **map, char *s)
 {
 	int		i;
 	char	**rtn;
 
 	i = 0;
-	while(map && map[i])
+	while (map && map[i])
 		i++;
 	rtn = safe_calloc(sizeof(char *), i + 2);
 	rtn[i + 1] = NULL;
@@ -45,6 +44,20 @@ static char	**add_map(char **map, char *s)
 		rtn[i] = map[i];
 	free(map);
 	return (rtn);
+}
+
+static void	cpy_map(t_cub *cub, char **map)
+{
+	int	i;
+
+	i = 0;
+	cub->map = safe_calloc(sizeof(char *), cub->map_height + 1);
+	while (i < cub->map_height && map[i])
+	{
+		cub->map[i] = safe_calloc(sizeof(char), cub->map_width + 1);
+		ft_strlcpy(cub->map[i], map[i], cub->map_width + 1);
+		i++;
+	}
 }
 
 void	parse_map(int fd, t_cub *cub)
@@ -69,13 +82,6 @@ void	parse_map(int fd, t_cub *cub)
 	if (!map)
 		error_control("Invalid map error", NULL, 1);
 	get_width_height(cub, map);
-	i = 0;
-	cub->map = safe_calloc(sizeof(char *), cub->map_height + 1);
-	while (i < cub->map_height && map[i])
-	{
-		cub->map[i] = safe_calloc(sizeof(char), cub->map_width + 1);
-		ft_strlcpy(cub->map[i], map[i], cub->map_width + 1);
-		i++;
-	}
+	cpy_map(cub, map);
 	free_box(map);
 }

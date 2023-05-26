@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 14:08:22 by hunaprk           #+#    #+#             */
-/*   Updated: 2023/05/26 12:48:39 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 13:20:42 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # include <fcntl.h>
 
 # define X_EVENT_KEY_PRESS	2
-# define X_EVENT_KEY_release	3
+# define X_EVENT_KEY_RELEASE	3
 # define X_EVENT_KEY_EXIT	17
 
 # define KEY_ESC 53
@@ -72,7 +72,6 @@ void	dda(t_data *data);
 
 // draw
 int		check_raydir(t_data *data);
-void	verLine(t_data *data, int x, int y1, int y2, int color);
 void	draw(t_data *data);
 
 //init_image

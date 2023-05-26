@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 03:42:24 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/25 20:31:09 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 13:57:19 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,23 @@ void	dda(t_data *data)
 {
 	while (data->ray.hit == 0)
 	{
-		if (data->ray.sideDistX < data->ray.sideDistY)
+		if (data->ray.side_dist_x < data->ray.side_dist_y)
 		{
-			data->ray.sideDistX += data->ray.deltaDistX;
-			data->ray.mapX += data->ray.stepX;
+			data->ray.side_dist_x += data->ray.delta_dist_x;
+			data->ray.map_x += data->ray.step_x;
 			data->ray.side = 0;
 		}
 		else
 		{
-			data->ray.sideDistY += data->ray.deltaDistY;
-			data->ray.mapY += data->ray.stepY;
+			data->ray.side_dist_y += data->ray.delta_dist_y;
+			data->ray.map_y += data->ray.step_y;
 			data->ray.side = 1;
 		}
-		if (data->cub.map[data->ray.mapY][data->ray.mapX] == '1')
+		if (data->cub.map[data->ray.map_y][data->ray.map_x] == '1')
 			data->ray.hit = 1;
 	}
 	if (data->ray.side == 0)
-		data->ray.perpWallDist = (data->ray.mapX - data->player.posX + (1 - data->ray.stepX) / 2) / data->ray.rayDirX;
+		data->ray.perp_wall_dist = (data->ray.map_x - data->player.pos_x + (1 - data->ray.step_x) / 2) / data->ray.raydir_x;
 	else
-		data->ray.perpWallDist = (data->ray.mapY - data->player.posY + (1 - data->ray.stepY) / 2) / data->ray.rayDirY;
+		data->ray.perp_wall_dist = (data->ray.map_y - data->player.pos_y + (1 - data->ray.step_y) / 2) / data->ray.raydir_y;
 }

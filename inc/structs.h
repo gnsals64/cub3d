@@ -6,14 +6,14 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 20:56:12 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/05/26 12:17:42 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 13:59:23 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-enum direct{
+enum e_direct{
 	NO,
 	SO,
 	WE,
@@ -23,20 +23,19 @@ enum direct{
 typedef struct s_cub
 {
 	char		**map;
-	char 		*texture[4];
+	char		*texture[4];
 	int			f_color;
 	int			c_color;
 	int			map_width;
 	int			map_height;
 	int			player;
-} t_cub;
+}	t_cub;
 
 typedef struct s_mlx
 {
 	void	*mlx_ptr;
 	void	*mlx_win;
 }	t_mlx;
-
 
 typedef struct s_img
 {
@@ -51,36 +50,36 @@ typedef struct s_img
 
 typedef struct s_player
 {
-	double	posX;
-	double	posY;
-	double	dirX;
-	double	dirY;
-	double	planeX;
-	double	planeY;
-	double	moveSpeed;
-	double	rotSpeed;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+	double	move_speed;
+	double	rot_speed;
 	int		player_size;
 }	t_player;
 
 typedef struct s_ray
 {
-	double	cameraX;
-	double	rayDirX;
-	double	rayDirY;
-	int		mapX;
-	int		mapY;
-	double	sideDistX;
-	double	sideDistY;
-	double	deltaDistX;
-	double	deltaDistY;
-	double	perpWallDist;
-	int		stepX;
-	int		stepY;
+	double	camera_x;
+	double	raydir_x;
+	double	raydir_y;
+	int		map_x;
+	int		map_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	perp_wall_dist;
+	int		step_x;
+	int		step_y;
 	int		hit;
 	int		side;
-	int		lineHeight;
-	int		drawStart;
-	int		drawEnd;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
 	int		color;
 }	t_ray;
 

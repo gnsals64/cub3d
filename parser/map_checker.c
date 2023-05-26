@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 19:05:28 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/05/26 12:17:23 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 13:53:26 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	is_elements(char c, t_data *data)
 		return (2);
 	else if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
 	{
-		if(data)
+		if (data)
 			data->cub.player++;
 		return (3);
 	}
@@ -49,43 +49,40 @@ static int	check_caldinal(char **map, t_cub *cub, int x, int y)
 		j = -1;
 		while (j <= 1)
 		{
-			if(is_wall(map, cub, x + i , y + j))
+			if (is_wall(map, cub, x + i, y + j))
 				return (1);
 			j++;
 		}
 		i++;
 	}
-	return(0);
+	return (0);
 }
 
 void	check_user_direction(int x, int y, t_data *data)
 {
-	char	c;
-
 	if (data->cub.player > 1)
-		error_control("Put one player Error", NULL, 1);
-	c = data->cub.map[y][x];
-	data->player.posX = x + 0.5;
-	data->player.posY = y + 0.5;
-	if (c == 'N')
+		error_control("Put only one player Error", NULL, 1);
+	data->player.pos_x = x + 0.5;
+	data->player.pos_y = y + 0.5;
+	if (data->cub.map[y][x] == 'N')
 	{
-		data->player.planeX = 0.66;
-		data->player.dirY = -1;
+		data->player.plane_x = 0.66;
+		data->player.dir_y = -1;
 	}
-	if (c == 'W')
+	if (data->cub.map[y][x] == 'W')
 	{
-		data->player.planeY = -0.66;
-		data->player.dirX = -1;
+		data->player.plane_y = -0.66;
+		data->player.dir_x = -1;
 	}
-	if (c == 'S')
+	if (data->cub.map[y][x] == 'S')
 	{
-		data->player.planeX = -0.66;
-		data->player.dirY = 1;
+		data->player.plane_x = -0.66;
+		data->player.dir_y = 1;
 	}
-	if (c == 'E')
+	if (data->cub.map[y][x] == 'E')
 	{
-		data->player.planeY = 0.66;
-		data->player.dirX = 1;
+		data->player.plane_y = 0.66;
+		data->player.dir_x = 1;
 	}
 }
 
@@ -95,13 +92,11 @@ void	map_checker(char **map, t_cub *cub, t_data *data)
 	int	y;
 	int	elements;
 
-	(void)data;
-	x = 0;
 	y = 0;
-	while(map[y])
+	while (map[y])
 	{
 		x = 0;
-		while(map[y][x] && map[y][x] != '\n')
+		while (map[y][x] && map[y][x] != '\n')
 		{
 			elements = is_elements(map[y][x], data);
 			if (elements == 0)
@@ -117,6 +112,4 @@ void	map_checker(char **map, t_cub *cub, t_data *data)
 		}
 		y++;
 	}
-	if (data->cub.player == 0)
-		error_control("No player Error", NULL, 1);
 }

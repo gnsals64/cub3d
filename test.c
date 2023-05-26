@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 15:18:03 by yohlee            #+#    #+#             */
-/*   Updated: 2023/05/25 15:33:26 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/05/26 13:59:23 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@ typedef struct	s_info
 	double dirX;
 	double dirY;
 	double planeX;
-	double planeY;
+	double plane_y;
 	void	*mlx;
 	void	*win;
 	t_img	img;
 	int		buf[height][width];
 	int		**texture;
-	double	moveSpeed;
-	double	rotSpeed;
+	double	move_speed;
+	double	rot_speed;
 	int		re_buf;
 
 }				t_info;
@@ -118,93 +118,93 @@ void	calc(t_info *info)
 	}
 	while (x < width)
 	{
-		double cameraX = 2 * x / (double)width - 1;
-		double rayDirX = info->dirX + info->planeX * cameraX;
-		double rayDirY = info->dirY + info->planeY * cameraX;
+		double camera_x = 2 * x / (double)width - 1;
+		double rayDirX = info->dirX + info->planeX * camera_x;
+		double rayDirY = info->dirY + info->plane_y * camera_x;
 
-		int mapX = (int)info->posX;
-		int mapY = (int)info->posY;
+		int map_x = (int)info->posX;
+		int map_y = (int)info->posY;
 
 		//length of ray from current position to next x or y-side
-		double sideDistX;
-		double sideDistY;
+		double side_dist_x;
+		double side_dist_y;
 
 		 //length of ray from one x or y-side to next x or y-side
-		double deltaDistX = fabs(1 / rayDirX);
-		double deltaDistY = fabs(1 / rayDirY);
-		double perpWallDist;
+		double delta_dist_x = fabs(1 / rayDirX);
+		double delta_dist_y = fabs(1 / rayDirY);
+		double perp_wall_dist;
 
 		//what direction to step in x or y-direction (either +1 or -1)
-		int stepX;
-		int stepY;
+		int step_x;
+		int step_y;
 
 		int hit = 0; //was there a wall hit?
 		int side; //was a NS or a EW wall hit?
 
 		if (rayDirX < 0)
 		{
-			stepX = -1;
-			sideDistX = (info->posX - mapX) * deltaDistX;
+			step_x = -1;
+			side_dist_x = (info->posX - map_x) * delta_dist_x;
 		}
 		else
 		{
-			stepX = 1;
-			sideDistX = (mapX + 1.0 - info->posX) * deltaDistX;
+			step_x = 1;
+			side_dist_x = (map_x + 1.0 - info->posX) * delta_dist_x;
 		}
 		if (rayDirY < 0)
 		{
-			stepY = -1;
-			sideDistY = (info->posY - mapY) * deltaDistY;
+			step_y = -1;
+			side_dist_y = (info->posY - map_y) * delta_dist_y;
 		}
 		else
 		{
-			stepY = 1;
-			sideDistY = (mapY + 1.0 - info->posY) * deltaDistY;
+			step_y = 1;
+			side_dist_y = (map_y + 1.0 - info->posY) * delta_dist_y;
 		}
 
 		while (hit == 0)
 		{
 			//jump to next map square, OR in x-direction, OR in y-direction
-			if (sideDistX < sideDistY)
+			if (side_dist_x < side_dist_y)
 			{
-				sideDistX += deltaDistX;
-				mapX += stepX;
+				side_dist_x += delta_dist_x;
+				map_x += step_x;
 				side = 0;
 			}
 			else
 			{
-				sideDistY += deltaDistY;
-				mapY += stepY;
+				side_dist_y += delta_dist_y;
+				map_y += step_y;
 				side = 1;
 			}
 			//Check if ray has hit a wall
-			if (worldMap[mapX][mapY] > 0) hit = 1;
+			if (worldMap[map_x][map_y] > 0) hit = 1;
 		}
 		if (side == 0)
-			perpWallDist = (mapX - info->posX + (1 - stepX) / 2) / rayDirX;
+			perp_wall_dist = (map_x - info->posX + (1 - step_x) / 2) / rayDirX;
 		else
-			perpWallDist = (mapY - info->posY + (1 - stepY) / 2) / rayDirY;
+			perp_wall_dist = (map_y - info->posY + (1 - step_y) / 2) / rayDirY;
 
 		//Calculate height of line to draw on screen
-		int lineHeight = (int)(height / perpWallDist);
+		int line_height = (int)(height / perp_wall_dist);
 
 		//calculate lowest and highest pixel to fill in current stripe
-		int drawStart = -lineHeight / 2 + height / 2;
-		if(drawStart < 0)
-			drawStart = 0;
-		int drawEnd = lineHeight / 2 + height / 2;
-		if(drawEnd >= height)
-			drawEnd = height - 1;
+		int draw_start = -line_height / 2 + height / 2;
+		if(draw_start < 0)
+			draw_start = 0;
+		int draw_end = line_height / 2 + height / 2;
+		if(draw_end >= height)
+			draw_end = height - 1;
 
 		// texturing calculations
-		int texNum = worldMap[mapX][mapY];
+		int texNum = worldMap[map_x][map_y];
 
 		// calculate value of wallX
 		double wallX;
 		if (side == 0)
-			wallX = info->posY + perpWallDist * rayDirY;
+			wallX = info->posY + perp_wall_dist * rayDirY;
 		else
-			wallX = info->posX + perpWallDist * rayDirX;
+			wallX = info->posX + perp_wall_dist * rayDirX;
 		wallX -= floor(wallX);
 
 		// x coordinate on the texture
@@ -215,10 +215,10 @@ void	calc(t_info *info)
 			texX = texWidth - texX - 1;
 
 		// How much to increase the texture coordinate perscreen pixel
-		double step = 1.0 * texHeight / lineHeight;
+		double step = 1.0 * texHeight / line_height;
 		// Starting texture coordinate
-		double texPos = (drawStart - height / 2 + lineHeight / 2) * step;
-		for (int y = drawStart; y < drawEnd; y++)
+		double texPos = (draw_start - height / 2 + line_height / 2) * step;
+		for (int y = draw_start; y < draw_end; y++)
 		{
 			// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
 			int texY = (int)texPos & (texHeight - 1);
@@ -245,40 +245,40 @@ int	key_press(int key, t_info *info)
 {
 	if (key == KEY_W)
 	{
-		if (!worldMap[(int)(info->posX + info->dirX * info->moveSpeed)][(int)(info->posY)])
-			info->posX += info->dirX * info->moveSpeed;
-		if (!worldMap[(int)(info->posX)][(int)(info->posY + info->dirY * info->moveSpeed)])
-			info->posY += info->dirY * info->moveSpeed;
+		if (!worldMap[(int)(info->posX + info->dirX * info->move_speed)][(int)(info->posY)])
+			info->posX += info->dirX * info->move_speed;
+		if (!worldMap[(int)(info->posX)][(int)(info->posY + info->dirY * info->move_speed)])
+			info->posY += info->dirY * info->move_speed;
 	}
 	//move backwards if no wall behind you
 	if (key == KEY_S)
 	{
-		if (!worldMap[(int)(info->posX - info->dirX * info->moveSpeed)][(int)(info->posY)])
-			info->posX -= info->dirX * info->moveSpeed;
-		if (!worldMap[(int)(info->posX)][(int)(info->posY - info->dirY * info->moveSpeed)])
-			info->posY -= info->dirY * info->moveSpeed;
+		if (!worldMap[(int)(info->posX - info->dirX * info->move_speed)][(int)(info->posY)])
+			info->posX -= info->dirX * info->move_speed;
+		if (!worldMap[(int)(info->posX)][(int)(info->posY - info->dirY * info->move_speed)])
+			info->posY -= info->dirY * info->move_speed;
 	}
 	//rotate to the right
 	if (key == KEY_D)
 	{
 		//both camera direction and camera plane must be rotated
 		double oldDirX = info->dirX;
-		info->dirX = info->dirX * cos(-info->rotSpeed) - info->dirY * sin(-info->rotSpeed);
-		info->dirY = oldDirX * sin(-info->rotSpeed) + info->dirY * cos(-info->rotSpeed);
+		info->dirX = info->dirX * cos(-info->rot_speed) - info->dirY * sin(-info->rot_speed);
+		info->dirY = oldDirX * sin(-info->rot_speed) + info->dirY * cos(-info->rot_speed);
 		double oldPlaneX = info->planeX;
-		info->planeX = info->planeX * cos(-info->rotSpeed) - info->planeY * sin(-info->rotSpeed);
-		info->planeY = oldPlaneX * sin(-info->rotSpeed) + info->planeY * cos(-info->rotSpeed);
+		info->planeX = info->planeX * cos(-info->rot_speed) - info->plane_y * sin(-info->rot_speed);
+		info->plane_y = oldPlaneX * sin(-info->rot_speed) + info->plane_y * cos(-info->rot_speed);
 	}
 	//rotate to the left
 	if (key == KEY_A)
 	{
 		//both camera direction and camera plane must be rotated
 		double oldDirX = info->dirX;
-		info->dirX = info->dirX * cos(info->rotSpeed) - info->dirY * sin(info->rotSpeed);
-		info->dirY = oldDirX * sin(info->rotSpeed) + info->dirY * cos(info->rotSpeed);
+		info->dirX = info->dirX * cos(info->rot_speed) - info->dirY * sin(info->rot_speed);
+		info->dirY = oldDirX * sin(info->rot_speed) + info->dirY * cos(info->rot_speed);
 		double oldPlaneX = info->planeX;
-		info->planeX = info->planeX * cos(info->rotSpeed) - info->planeY * sin(info->rotSpeed);
-		info->planeY = oldPlaneX * sin(info->rotSpeed) + info->planeY * cos(info->rotSpeed);
+		info->planeX = info->planeX * cos(info->rot_speed) - info->plane_y * sin(info->rot_speed);
+		info->plane_y = oldPlaneX * sin(info->rot_speed) + info->plane_y * cos(info->rot_speed);
 	}
 	if (key == KEY_ESC)
 		exit(0);
@@ -325,7 +325,7 @@ int	main(void)
 	info.dirX = -1.0;
 	info.dirY = 0.0;
 	info.planeX = 0.0;
-	info.planeY = 0.66;
+	info.plane_y = 0.66;
 	info.re_buf = 0;
 
 	for (int i = 0; i < height; i++)
@@ -353,8 +353,8 @@ int	main(void)
 
 	load_texture(&info);
 
-	info.moveSpeed = 0.05;
-	info.rotSpeed = 0.05;
+	info.move_speed = 0.05;
+	info.rot_speed = 0.05;
 
 	info.win = mlx_new_window(info.mlx, width, height, "mlx");
 

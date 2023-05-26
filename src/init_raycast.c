@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 03:29:22 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/22 19:40:56 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/05/26 13:57:19 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,37 +15,37 @@
 void	set_raydir(t_data *data, int x)
 {
 	(void)x;
-	if (data->ray.rayDirX < 0)
+	if (data->ray.raydir_x < 0)
 	{
-		data->ray.stepX = -1;
-		data->ray.sideDistX = (data->player.posX - data->ray.mapX) * data->ray.deltaDistX;
+		data->ray.step_x = -1;
+		data->ray.side_dist_x = (data->player.pos_x - data->ray.map_x) * data->ray.delta_dist_x;
 	}
 	else
 	{
-		data->ray.stepX = 1;
-		data->ray.sideDistX = (data->ray.mapX + 1.0 - data->player.posX) * data->ray.deltaDistX;
+		data->ray.step_x = 1;
+		data->ray.side_dist_x = (data->ray.map_x + 1.0 - data->player.pos_x) * data->ray.delta_dist_x;
 	}
-	if (data->ray.rayDirY < 0)
+	if (data->ray.raydir_y < 0)
 	{
-		data->ray.stepY = -1;
-		data->ray.sideDistY = (data->player.posY - data->ray.mapY) * data->ray.deltaDistY;
+		data->ray.step_y = -1;
+		data->ray.side_dist_y = (data->player.pos_y - data->ray.map_y) * data->ray.delta_dist_y;
 	}
 	else
 	{
-		data->ray.stepY = 1;
-		data->ray.sideDistY = (data->ray.mapY + 1.0 - data->player.posY) * data->ray.deltaDistY;
+		data->ray.step_y = 1;
+		data->ray.side_dist_y = (data->ray.map_y + 1.0 - data->player.pos_y) * data->ray.delta_dist_y;
 	}
 }
 
 void	init_ray(t_data *data, int x)
 {
-	data->ray.cameraX = 2 * x / (double)width - 1;
-	data->ray.rayDirX = data->player.dirX + data->player.planeX * data->ray.cameraX;
-	data->ray.rayDirY = data->player.dirY + data->player.planeY * data->ray.cameraX;
-	data->ray.mapX = (int)data->player.posX;
-	data->ray.mapY = (int)data->player.posY;
-	data->ray.deltaDistX = fabs(1 / data->ray.rayDirX);
-	data->ray.deltaDistY = fabs(1 / data->ray.rayDirY);
+	data->ray.camera_x = 2 * x / (double)width - 1;
+	data->ray.raydir_x = data->player.dir_x + data->player.plane_x * data->ray.camera_x;
+	data->ray.raydir_y = data->player.dir_y + data->player.plane_y * data->ray.camera_x;
+	data->ray.map_x = (int)data->player.pos_x;
+	data->ray.map_y = (int)data->player.pos_y;
+	data->ray.delta_dist_x = fabs(1 / data->ray.raydir_x);
+	data->ray.delta_dist_y = fabs(1 / data->ray.raydir_y);
 	data->ray.hit = 0;
 	set_raydir(data, x);
 }
