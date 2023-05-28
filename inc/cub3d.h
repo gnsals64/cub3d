@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 14:08:22 by hunaprk           #+#    #+#             */
-/*   Updated: 2023/05/26 16:39:41 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/05/28 19:44:21 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,20 @@
 # define X_EVENT_KEY_RELEASE	3
 # define X_EVENT_KEY_EXIT	17
 
-# define KEY_ESC 53
-# define KEY_A 0
-# define KEY_D 2
-# define KEY_W 13
-# define KEY_S 1
-# define KEY_LEFT 123
-# define KEY_RIGHT 124
+// # define KEY_ESC 53
+// # define KEY_A 0
+// # define KEY_D 2
+// # define KEY_W 13
+// # define KEY_S 1
+// # define KEY_LEFT 123
+// # define KEY_RIGHT 124
+# define KEY_ESC 65307
+# define KEY_A 97
+# define KEY_D 100
+# define KEY_W 119
+# define KEY_S 115
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
 
 # define WIDTH 1280
 # define HEIGHT 720

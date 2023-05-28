@@ -6,7 +6,7 @@
 #    By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 16:37:06 by junhyupa          #+#    #+#              #
-#    Updated: 2023/05/26 16:00:19 by junhyupa         ###   ########.fr        #
+#    Updated: 2023/05/28 19:40:43 by junhyupa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,10 @@ FLAG = -Wall -Werror -Wextra -g -fsanitize=address
 
 INC = -I ./inc
 
-#MLX_DIR = ./minilibx-linux
-#MLX_EXEC = -L{MLX_DIR} -lmlx -lm -lX11 -lXext
 MLX_DIR = ./
-MLX_EXEC = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+MLX_EXEC = -L${MLX_DIR} -lmlx -lm -lX11 -lXext
+# MLX_DIR = ./
+# MLX_EXEC = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 
 LIBFT := ./libft/libft.a
 LIBFT_DIR := ./libft/
@@ -41,7 +41,7 @@ OBJS := $(SRCS:.c=.o) $(PARSER_SRCS:.c=.o) $(UTIL_SRCS:.c=.o) $(GNL_SRCS:.c=.o)
 all : ${NAME}
 
 %.o : %.c
-	$(CC)  ${INC} -c $< -o  $@
+	$(CC) ${MLX_EXEC} ${INC} -c $< -o  $@
 
 ${NAME} : $(OBJS) $(LIBFT)
 	${CC}  $^ ${MLX_EXEC}  ${INC} -o $@
