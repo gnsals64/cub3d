@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 18:40:17 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/28 19:21:42 by junhyupa         ###   ########.fr       */
+/*   Created: 2023/05/22 03:08:15 by hupa              #+#    #+#             */
+/*   Updated: 2023/05/26 16:08:11 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-static int	is_cub(char *av)
+int	main_loop(t_data *data)
 {
-	size_t	len;
-
-	len = ft_strlen(av);
-	if (len < 5)
-		error_control(".cub file only Error", NULL, 1);
-	if (ft_strncmp(".cub", &av[len - 4], 4))
-		error_control(".cub file only Error", NULL, 1);
+	raycast(data);
+	draw_all(data);
 	return (0);
 }
 
-int	main(int ac, char **av)
+void	loop(t_data *data)
 {
-	t_data	data;
-
-	if (ac != 2 || is_cub(av[1]))
-		error_control("worng argument Error", NULL, 1);
-	ft_init(&data, av[1]);
-	loop(&data);
-	return (0);
+	mlx_loop_hook(data->mlx.mlx_ptr, &main_loop, data);
+	mlx_hook(data->mlx.mlx_win, X_EVENT_KEY_PRESS, 1L << 0, &key_press, data);
+	mlx_hook(data->mlx.mlx_win, X_EVENT_KEY_EXIT, 1L << 0, &key_exit, data);
+	mlx_loop(data->mlx.mlx_ptr);
 }

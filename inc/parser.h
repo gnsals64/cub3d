@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hupa <hupa@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 18:41:09 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/16 21:27:54 by hupa             ###   ########.fr       */
+/*   Created: 2023/05/16 15:34:46 by junhyupa          #+#    #+#             */
+/*   Updated: 2023/05/26 13:13:34 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#ifndef PARSER_H
+# define PARSER_H
 
-void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
-{
-	char	*dst;
+# include "cub3d.h"
 
-	dst = img->addr + (y * img->line_size + x * (img->bpp / 8));
-	*(unsigned int*)dst = color;
-}
+void	parser(char *av, t_cub *cub, t_data *data);
+void	parse_map(int fd, t_cub *cub);
+void	map_checker(char **map, t_cub *cub, t_data *data);
+void	parse_option(int fd, t_cub *cub);
+
+#endif
