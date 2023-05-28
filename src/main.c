@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hunpark <hunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:40:17 by hupa              #+#    #+#             */
-/*   Updated: 2023/05/26 16:44:04 by hunpark          ###   ########.fr       */
+/*   Updated: 2023/05/28 19:21:42 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
-
-void	print_box(char **box)
-{
-	int	i;
-
-	i = 0;
-	while (box[i])
-		ft_putstr_fd(box[i++], 1);
-}
 
 static int	is_cub(char *av)
 {
